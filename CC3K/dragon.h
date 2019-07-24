@@ -1,6 +1,6 @@
 #ifndef DRAGON_H
 #define DRAGON_H
-#include "character.h"
+#include "enemy.h"
 #include "dragonhoard.h"
 #include "barriersuit.h"
 
@@ -10,8 +10,10 @@ class Dragon : public Character {
 		DragonHoard * dragonHoard;
 		BarrierSuit * barrierSuit;
 	public:
-		void dealDamage(Character * opponent);
-		void takeDamage(amount Integer);
+		Dragon(Posn position, DragonHoard * dragonHoard, BarrierSuit * barrierSuit);
+		~Dragon();
+		/*void dealDamage(Character * opponent) override;
+		void takeDamage(amount Integer) override;*/
 }
 
 #endif

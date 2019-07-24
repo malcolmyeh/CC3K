@@ -1,7 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
-
 #include <string>
+#include "posn.h"
 
 
 class Character {
@@ -12,15 +12,19 @@ class Character {
 		int gold;
 		std::string race;
 		char symbol;
+		Posn position;
 	public:
 		virtual int getAtk();
 		virtual int getDef();
 		virtual int getHP();
 		virtual int getGold();
-		virtual std::string getRace();
-		virtual void move(int x, int y);
-		virtual void dealDamage(Character * opponent); //write function here
+		posn getPosition();
+		std::string getRace();
+		char getSymbol();
+		virtual void move(int x, int y) = 0;
+		std::string dealDamage(Character * opponent); 
 		virtual void takeDamage(int amount);
+
 }
 
 

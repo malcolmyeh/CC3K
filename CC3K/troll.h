@@ -1,11 +1,13 @@
 #ifndef 
 #define 
-#include "character.h"
+#include "enemy.h"
 
-class Troll : public Character {
+class Troll : public Enemy {
 	public:
-		void dealDamage(Character * opponent);
-		void takeDamage(amount Integer);
+		Troll(Posn position);
+		~Troll();
+		/*void dealDamage(Character * opponent) override;
+		void takeDamage(amount Integer) override;*/
 }
 
 #endif
