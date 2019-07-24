@@ -37,6 +37,6 @@ public:
 	bool getHostile();
 	bool getSpawned();
 	
-}
+};
 
 #endif

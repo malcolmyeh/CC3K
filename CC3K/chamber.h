@@ -3,17 +3,16 @@
 
 class Chamber {
 
-protected:
 	int num;
 	int maxRow;
 	int maxCol;
-	int rows;
-	int cols;
+	int row;
+	int col;
 
 public:
 	Chamber(int num);
-	bool checkRange();
+	bool checkRange(int x, int y);
 	~Chamber();
-}
+};
 
 #endif
