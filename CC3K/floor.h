@@ -1,7 +1,6 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
-#include "chamber.h"
 #include "player.h"
 #include "posn.h"
 #include "stair.h"

@@ -7,7 +7,7 @@ main.o: main.cc posn.h floor.h character.h player.h human.h
 posn.o: posn.cc posn.h
 		g++ -std=c++14 -Werror=vla -c posn.cc
 
-floor.o: floor.cc floor.h
+floor.o: floor.cc floor.h posn.h player.h
 		g++ -std=c++14 -Werror=vla -c floor.cc
 
 character.o: character.cc character.h
@@ -22,5 +22,5 @@ human.o: human.cc human.h player.h
 .Phony: clean
 
 clean:
-		rm *.0 cc3k
+		rm *.o cc3k
 

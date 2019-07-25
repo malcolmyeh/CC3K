@@ -1,4 +1,4 @@
-#include "Posn.h"
+#include "posn.h"
 
 Posn Posn::getNew(std::string dir) {
 	Posn p;
