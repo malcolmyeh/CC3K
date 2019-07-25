@@ -1,5 +1,5 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef HUMAN_H
+#define HUMAN_H
 
 #include "player.h"
 #include <cmath>
