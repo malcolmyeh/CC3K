@@ -21,20 +21,18 @@ Floor() {
 }
 
 ~Floor() {
-	for (enemy : *this->enemies) {
+	/*for (enemy : *this->enemies) {
 		delete enemy;
 	}
 	for (item : *this->items) {
 		delete item;
-	}
+	}*/
 	for (chamber : *this->chambers) {
 		delete chamber;
 	}
 }
 
-void generateEnemies() {
-
-}
+//void generateEnemies() {}
 
 /*void generateItems() {
 

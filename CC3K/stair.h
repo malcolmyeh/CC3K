@@ -8,6 +8,6 @@ class Stair {
 public:
 	char getSymbol();
 	
-}
+};
 
 #endif
