@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "posn.h"
 #include "floor.h"
 #include "character.h"
 #include "player.h"
