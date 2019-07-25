@@ -2,7 +2,7 @@
 
 
 
-Human::Human(int HP, int gold, Posn position) : Atk(20), Def(20), HP(HP), gold(gold), race("Human"), symbol("@"), position(position) {}
+Human::Human(int HP, int gold, Posn position) : Atk(20), Def(20), HP(HP), gold(gold), race("Human"), symbol('@'), position(position) {}
 
 Human::~Human();
 

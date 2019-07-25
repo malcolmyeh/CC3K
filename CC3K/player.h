@@ -16,6 +16,6 @@ class Player : public Character {
 		int curChamber();
 		int getMaxHP();
 		void move(Posn position);
-}
+};
 
 #endif

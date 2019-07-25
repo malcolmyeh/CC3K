@@ -26,7 +26,7 @@ class Character {
 		std::string dealDamage(Character * opponent); 
 		virtual void takeDamage(int amount);
 
-}
+};
 
 
 #endif
