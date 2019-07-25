@@ -1,6 +1,11 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
+#include "chamber.h"
+#include "player.h"
+#include "enemy.h"
+#include "posn.h"
+
 class Floor {
 
 	int level;
@@ -8,23 +13,23 @@ class Floor {
 	bool stairVisible;
 	bool merchantHostile;
 	bool barrierSpawned;
-	Player * player;
 
 public:
 	char defaultGrid[25][79];
 	std::vector<Enemy *> enemies;
-	std::vector<Item *> items;
-	std::vector<Chambers *> chambers;
+	//std::vector<Item *> items;
+	//std::vector<Chambers *> chambers;
 	char displayGrid[25][79];
 	Stair * stair;
+	Player * player;
 
 	Floor(int level, bool won, bool visible, bool hostile, bool spawned, Player * player);
 	Floor();
 	~Floor();
 
 	void generateEnemies();
-	void generateItems();
-	void generateChamber();
+	//void generateItems();
+	//void generateChamber();
 	bool validTile(Posn pos);
 	void setVisible(bool visible);
 	void setLevel(int level);

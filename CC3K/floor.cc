@@ -1,7 +1,4 @@
 #include "floor.h"
-#include "chamber.h"
-#include "player.h"
-#include "posn.h"
 
 Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
 	this->level = level;
@@ -39,13 +36,13 @@ void generateEnemies() {
 
 }
 
-void generateItems() {
+/*void generateItems() {
 
 }
 
 void generateChamber() {
 
-}
+}*/
 
 bool validTile(Posn pos) {
 	return displayGrid[pos.y - 1][pos.x - 1] == ".";

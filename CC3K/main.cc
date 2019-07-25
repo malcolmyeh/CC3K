@@ -27,34 +27,34 @@ bool check(std::string s) {
 }
 
 int main(void) {
-	Floor floor();
-	ifstream in;
+	Floor floor;
+	std::ifstream in;
 	in.open("map.txt");
-	assure(in, "map.txt");
 	for (int i = 0; i < 25; i++) {
 		for (int j = 0; j < 79; j++) {
 			in >> floor.displayGrid[i][j];
 		}
 	}
 	Posn p = {4, 4};
-	Player *player = Player(100, 100, p);
+	Player *play =  new Human(100, 100, p);
 
-	floor.player = player;
-	floor.displayGrid[3][3] = "@";
+	floor.player = play;
+	floor.displayGrid[3][3] = '@';
 
 	std::string s;
-	while (cin >> s) {
-		if (check(s)) {
-			Posn pos = floor.player.position.getNew("ea");
+	while (std::cin >> s) {
+		std::string ss = s;
+		if (check(ss)) {
+			Posn pos = floor.player.position.getNew(ss);
 			if (floor.validTile(pos)) {
-				floor.displayGrid[floor.player.position.y - 1][floor.player.position.x - 1] = ".";
+				floor.displayGrid[floor.player.position.y - 1][floor.player.position.x - 1] = '.';
 				floor.player.position = pos;
-				floor.displayGrid[pos.y - 1][pos.x - 1] = "@"; 
+				floor.displayGrid[pos.y - 1][pos.x - 1] = '@'; 
 			} else {
-				cout << "Try again" << std::endl;
+				std::cout << "Try again" << std::endl;
 			}
 		} else {
-			cout << "Try again" << std::endl;
+			std::cout << "Try again" << std::endl;
 		}
 	}
 
