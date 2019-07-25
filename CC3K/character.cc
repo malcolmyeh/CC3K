@@ -17,7 +17,7 @@ int Character::getGold(){
 	return this->gold;
 }
 
-posn Character::getPosition(){
+Posn Character::getPosition(){
 	return this->position;
 }
 

@@ -1,6 +1,8 @@
 #ifndef CHAMBER_H
 #define CHAMBER_H
 
+#include "posn.h"
+
 class Chamber {
 
 	int num;

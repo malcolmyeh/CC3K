@@ -2,13 +2,21 @@
 
 
 
-Human::Human(int HP, int gold, Posn position) : Atk(20), Def(20), HP(HP), gold(gold), race("Human"), symbol('@'), position(position) {}
+Human::Human(int HP, int gold, Posn position) {
+	this->Atk = 20;
+	this->Def = 20;
+	this->HP = HP;
+	this->gold = gold;
+	this->race = "Human";
+	this->symbol = '@';
+	this->position = position;
+}
 
-Human::~Human();
+Human::~Human() {}
 
 
 void Human::takeDamage(int amount){
-	if (this->hasBarrier()){
+	if (this->barrier()){
 		this->HP -= ceil(amount / 2);
 	} else {
 		this->HP -= amount;

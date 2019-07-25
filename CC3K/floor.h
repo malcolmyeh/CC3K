@@ -23,7 +23,7 @@ public:
 	Stair * stair;
 	Player * player;
 
-	Floor(int level, bool won, bool visible, bool hostile, bool spawned, Player * player);
+	Floor(int level, bool won, bool hostile, bool spawned, Player * player);
 	Floor();
 	~Floor();
 

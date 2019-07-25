@@ -1,35 +1,35 @@
 #include "floor.h"
 
-Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
+Floor::Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
 	this->level = level;
 	this->won = won;
-	this->visible = false;
-	this->hostile = hostile;
-	this->spawned = spawned;
+	this->stairVisible = false;
+	this->merchantHostile = hostile;
+	this->barrierSpawned = spawned;
 	this->player = player;
-	this->stair = null;
+	this->stair = NULL;
 }
 
-Floor() {
+Floor::Floor() {
 	this->level = 0;
 	this->won = false;
-	this->visible = false;
-	this->hostile = false;
-	this->spawned = false;
-	this->player = null;
-	this->stair = null;
+	this->stairVisible = false;
+	this->merchantHostile = false;
+	this->barrierSpawned = false;
+	this->player = NULL;
+	this->stair = NULL;
 }
 
-~Floor() {
+Floor::~Floor() {
 	/*for (enemy : *this->enemies) {
 		delete enemy;
 	}
 	for (item : *this->items) {
 		delete item;
-	}*/
+	}
 	for (chamber : *this->chambers) {
 		delete chamber;
-	}
+	}*/
 }
 
 //void generateEnemies() {}
@@ -42,46 +42,46 @@ void generateChamber() {
 
 }*/
 
-bool validTile(Posn pos) {
-	return displayGrid[pos.y - 1][pos.x - 1] == ".";
+bool Floor::validTile(Posn pos) {
+	return this->displayGrid[pos.y - 1][pos.x - 1] == '.';
 }
 
-void setVisible(bool visible) {
-
-}
-
-void setLevel(int level) {
+void Floor::setVisible(bool visible) {
 
 }
 
-void setWon(bool won) {
+void Floor::setLevel(int level) {
 
 }
 
-void setHostile(bool hostile) {
+void Floor::setWon(bool won) {
 
 }
 
-void setSpawned(bool spawned) {
+void Floor::setHostile(bool hostile) {
 
 }
 
-bool getVisible() {
+void Floor::setSpawned(bool spawned) {
+
+}
+
+bool Floor::getVisible() {
 	return true;
 }
 
-int getLevel() {
+int Floor::getLevel() {
 	return 1;
 }
 
-bool getWon() {
+bool Floor::getWon() {
 	return true;
 }
 
-bool getHostile() {
+bool Floor::getHostile() {
 	return true;
 }
 
-bool getSpawned() {
+bool Floor::getSpawned() {
 	return true;
 }

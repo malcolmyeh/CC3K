@@ -1,6 +1,6 @@
 #include "Posn.h"
 
-Posn getNew(std::string dir) {
+Posn Posn::getNew(std::string dir) {
 		if (dir == "ea") {
 			this->x = this->x + 1;
 		} else if (dir == "we") {

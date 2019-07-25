@@ -1,6 +1,8 @@
 #ifndef POSN_H
 #define POSN_H
 
+#include <string>
+
 struct Posn {
 public:
 	int x;

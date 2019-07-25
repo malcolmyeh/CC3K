@@ -1,5 +1,6 @@
 //Project by Malcolm Yeh, Zayaan Moez, Kai Lu for CS246
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include <string>
 #include "posn.h"
@@ -28,11 +29,13 @@ bool check(std::string s) {
 
 int main(void) {
 	Floor floor;
-	std::ifstream in;
-	in.open("map.txt");
+	std::ifstream in ("map.txt");
+	std::string str;
 	for (int i = 0; i < 25; i++) {
+		std::getline("map.txt", str);
+		std::istringstream iss(str);
 		for (int j = 0; j < 79; j++) {
-			in >> floor.displayGrid[i][j];
+			iss >> floor.displayGrid[i][j];
 		}
 	}
 	Posn p = {4, 4};
@@ -42,6 +45,7 @@ int main(void) {
 	floor.displayGrid[3][3] = '@';
 
 	std::string s;
+	print(floor);
 	while (std::cin >> s) {
 		std::string ss = s;
 		if (check(ss)) {
@@ -54,7 +58,7 @@ int main(void) {
 				std::cout << "Try again" << std::endl;
 			}
 		} else {
-			std::cout << "Try again" << std::endl;
+			std::cout << "Bad input" << std::endl;
 		}
 	}
 

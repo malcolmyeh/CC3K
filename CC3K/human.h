@@ -2,6 +2,7 @@
 #define HUMAN_H
 
 #include "player.h"
+#include "posn.h"
 #include <cmath>
 
 class Human : public Player {

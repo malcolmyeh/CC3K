@@ -1,5 +1,5 @@
-cc3k: main.o  posn.o floor.o character.o player.o human.o
-		g++ -std=c++14 -Werror=vla -g main.o posn.o floor.o character.o player.o
+cc3k: main.o posn.o floor.o character.o player.o human.o
+		g++ -std=c++14 -Werror=vla -g main.o posn.o floor.o character.o player.o human.o -o cc3k
 
 main.o: main.cc posn.h floor.h character.h player.h human.h
 		g++ -std=c++14 -Werror=vla -c main.cc
