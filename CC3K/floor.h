@@ -3,8 +3,8 @@
 
 #include "chamber.h"
 #include "player.h"
-#include "enemy.h"
 #include "posn.h"
+#include "stair.h"
 
 class Floor {
 
@@ -16,7 +16,7 @@ class Floor {
 
 public:
 	char defaultGrid[25][79];
-	std::vector<Enemy *> enemies;
+	//std::vector<Enemy *> enemies;
 	//std::vector<Item *> items;
 	//std::vector<Chambers *> chambers;
 	char displayGrid[25][79];
@@ -27,7 +27,7 @@ public:
 	Floor();
 	~Floor();
 
-	void generateEnemies();
+	//void generateEnemies();
 	//void generateItems();
 	//void generateChamber();
 	bool validTile(Posn pos);

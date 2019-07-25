@@ -45,10 +45,10 @@ int main(void) {
 	while (std::cin >> s) {
 		std::string ss = s;
 		if (check(ss)) {
-			Posn pos = floor.player.position.getNew(ss);
+			Posn pos = floor.player->position.getNew(ss);
 			if (floor.validTile(pos)) {
-				floor.displayGrid[floor.player.position.y - 1][floor.player.position.x - 1] = '.';
-				floor.player.position = pos;
+				floor.displayGrid[floor.player->position.y - 1][floor.player->position.x - 1] = '.';
+				floor.player->position = pos;
 				floor.displayGrid[pos.y - 1][pos.x - 1] = '@'; 
 			} else {
 				std::cout << "Try again" << std::endl;
@@ -60,5 +60,5 @@ int main(void) {
 
 
 
-	delete player;
+	delete play;
 }
