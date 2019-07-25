@@ -1,6 +1,6 @@
 #include "enemy.h"
 
-bool Enemy::hasCompass(){
+bool Enemy::compass(){
 	return this->hasCompass;
 }
 

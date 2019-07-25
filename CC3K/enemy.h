@@ -7,7 +7,7 @@ class Enemy : public Character {
 	protected:
 		bool hasCompass;
 	public:
-		bool hasCompass();
+		bool compass();
 		bool withinRange(Player * player);
 };
 
