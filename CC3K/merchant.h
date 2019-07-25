@@ -8,6 +8,6 @@ class Merchant : public Enemy {
 		~Merchant();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
-}
+};
 
 #endif

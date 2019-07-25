@@ -8,6 +8,6 @@ class Troll : public Enemy {
 		~Troll();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
-}
+};
 
 #endif

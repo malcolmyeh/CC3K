@@ -10,6 +10,6 @@ class Human : public Player {
 		~Human();
 		void dealDamage(Character * opponent);
 		void takeDamage(int amount);
-}
+};
 
 #endif

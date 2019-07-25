@@ -19,7 +19,7 @@ class Character {
 		virtual int getDef();
 		virtual int getHP();
 		virtual int getGold();
-		posn getPosition();
+		Posn getPosition();
 		std::string getRace();
 		char getSymbol();
 		virtual void move(int x, int y) = 0;

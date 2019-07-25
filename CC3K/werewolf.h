@@ -8,6 +8,6 @@ class Werewolf : public Enemy {
 		~Werewolf();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
-}
+};
 
 #endif

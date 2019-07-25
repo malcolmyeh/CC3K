@@ -8,11 +8,11 @@ void Player::updateGold(int amount){
 	this->gold += amount;
 }
 
-bool Player::hasBarrier(){
+bool Player::barrier(){
 	return this->hasBarrier;
 }
 
-int Player::curChamber(){
+int Player::chamber(){
 	return this->curChamber;
 }
 

@@ -14,6 +14,6 @@ class Dragon : public Character {
 		~Dragon();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
-}
+};
 
 #endif

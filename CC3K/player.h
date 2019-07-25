@@ -12,8 +12,8 @@ class Player : public Character {
 
 		virtual Player * getPlayer();
 		void updateGold(int amount);
-		bool hasBarrier();
-		int curChamber();
+		bool barrier();
+		int chamber();
 		int getMaxHP();
 		void move(Posn position);
 };
