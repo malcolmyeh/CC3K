@@ -48,6 +48,7 @@ int main(void) {
 		std::string ss = s;
 		if (check(ss)) {
 			Posn pos = floor.player->position.getNew(ss);
+			std::cout << pos.x << " " << pos.y << std::endl;
 			if (floor.validTile(pos)) {
 				floor.displayGrid[floor.player->position.y - 1][floor.player->position.x - 1] = '.';
 				floor.player->position = pos;
