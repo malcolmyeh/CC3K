@@ -15,7 +15,7 @@ class Player : public Character {
 		bool barrier();
 		int chamber();
 		int getMaxHP();
-		void move(Posn position);
+		void move(Posn position) override;
 };
 
 #endif
