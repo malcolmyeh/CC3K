@@ -12,8 +12,9 @@ class Character {
 		int gold;
 		std::string race;
 		char symbol;
-		Posn position;
+		
 	public:
+		Posn position;
 		virtual int getAtk();
 		virtual int getDef();
 		virtual int getHP();
