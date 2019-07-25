@@ -1,6 +1,5 @@
 //Project by Malcolm Yeh, Zayaan Moez, Kai Lu for CS246
 #include <iostream>
-#include <sstream>
 #include <fstream>
 #include <string>
 #include "posn.h"
@@ -32,10 +31,9 @@ int main(void) {
 	std::ifstream in ("map.txt");
 	std::string str;
 	for (int i = 0; i < 25; i++) {
-		std::getline("map.txt", str);
-		std::istringstream iss(str);
+		getline(in, str);
 		for (int j = 0; j < 79; j++) {
-			iss >> floor.displayGrid[i][j];
+			floor.displayGrid[i][j] = str[j]; 
 		}
 	}
 	Posn p = {4, 4};
