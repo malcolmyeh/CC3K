@@ -35,19 +35,19 @@ Floor() {
 	}
 }
 
-void generateEnemies(char& displayGrid[25][79], std::vector<Enemy *>& enemies) {
+void generateEnemies() {
 
 }
 
-void generateItems(char& displayGrid[25][79], std::vector<Item *>& items) {
+void generateItems() {
 
 }
 
-void generateChamber(char& displayGrid[25][79], std::vector<Chamber *>& chambers) {
+void generateChamber() {
 
 }
 
-bool validTile(char& displayGrid[25][79], Posn pos) {
+bool validTile(Posn pos) {
 	return displayGrid[pos.y - 1][pos.x - 1] == ".";
 }
 

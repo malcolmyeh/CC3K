@@ -22,10 +22,10 @@ public:
 	Floor();
 	~Floor();
 
-	void generateEnemies(char& displayGrid[25][79], std::vector<Enemy *>& enemies);
-	void generateItems(char& displayGrid[25][79], std::vector<Item *>& items);
-	void generateChamber(char& displayGrid[25][79], std::vector<Chamber *>& chambers);
-	bool validTile(char& displayGrid[25][79]);
+	void generateEnemies();
+	void generateItems();
+	void generateChamber();
+	bool validTile(Posn pos);
 	void setVisible(bool visible);
 	void setLevel(int level);
 	void setWon(bool won);
