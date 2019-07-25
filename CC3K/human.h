@@ -8,7 +8,6 @@ class Human : public Player {
 	public:
 		Human(int HP, int gold, Posn position);
 		~Human();
-		void dealDamage(Character * opponent) override;
 		void takeDamage(int amount) override;
 };
 

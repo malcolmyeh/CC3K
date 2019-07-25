@@ -6,9 +6,6 @@ Human::Human(int HP, int gold, Posn position) : Atk(20), Def(20), HP(HP), gold(g
 
 Human::~Human();
 
-void Human::dealDamage(Character * opponent){
-
-}
 
 void Human::takeDamage(int amount){
 	if (this->hasBarrier()){

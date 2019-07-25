@@ -23,7 +23,7 @@ class Character {
 		std::string getRace();
 		char getSymbol();
 		virtual void move(int x, int y) = 0;
-		std::string dealDamage(Character * opponent); 
+		virtual std::string dealDamage(Character * opponent); 
 		virtual void takeDamage(int amount);
 
 };
