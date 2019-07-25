@@ -23,3 +23,7 @@ Posn getNew(std::string dir) {
 			this->y = this->y + 1;
 		}
 }
+
+bool Posn::operator==(const Posn& p) {
+	return this->x == p.x && this->y == this->y;
+}

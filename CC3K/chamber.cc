@@ -34,13 +34,30 @@ Chamber::Chamber(int num) {
 	}
 }
 
-bool checkRange(int x, int y) {
+bool checkRange(Posn p) {
+	int x = p.x;
+	int y = p.y;
 	if (num == 1 || num == 2 || num == 4) {
-		
+		return (x >= col && x <= maxCol && y >= row && y <= maxRow);
 	} else if (num == 3) {
-
+		if (x >= col && y >= row && x <= 61 && y <= 7) {
+			return true;
+		} else if (x = 62 && y >= 4 && y <= 13) {
+			return true;
+		} else if (x >= 63 && y >= 6 && x <= 70 && y <= 13) {
+			return true;
+		} else if (x >= 71 && y >= 7 && x <= 73 && y <= 13) {
+			return true;
+		} else if (x >= 74 && y >= 8 && x <= 76 && y <= 13) {
+			return true;
+		}
 	} else if (num == 5) {
-		
+		if (x >= 38 && y >= 20 && x <= 65 && y <= 22) {
+			return true;
+		} else if (x >= 66 && y >= 17 && x <= 76 && y <= 22) {
+			return true;
+		}
 	}
+	return false;
 }
 

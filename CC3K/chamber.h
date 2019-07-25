@@ -11,8 +11,7 @@ class Chamber {
 
 public:
 	Chamber(int num);
-	bool checkRange(int x, int y);
-	~Chamber();
+	bool checkRange(Posn p);
 };
 
 #endif
