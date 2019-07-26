@@ -7,24 +7,9 @@
 #include "character.h"
 #include "player.h"
 #include "human.h"
+#include "game.h"
 
 
-void print(Floor floor) {
-	for (int i = 0; i < 25; i++) {
-		for (int j = 0; j < 79; j++) {
-			std::cout << floor.displayGrid[i][j];
-		}
-		std::cout << std::endl;
-	} 
-}
-
-bool check(std::string s) {
-	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "se", "sw"};
-	for (int i = 0; i < 8; i++) {
-		if (s == dir[i]) { return true; }
-	}
-	return false;
-}
 
 int main(void) {
 	Floor floor;
@@ -33,7 +18,8 @@ int main(void) {
 	for (int i = 0; i < 25; i++) {
 		getline(in, str);
 		for (int j = 0; j < 79; j++) {
-			floor.displayGrid[i][j] = str[j]; 
+			floor.displayGrid[i][j] = str[j];
+			floor.defaultGrid[i][j] = str[j]; 
 		}
 	}
 	Posn p = {4, 4};
@@ -43,25 +29,24 @@ int main(void) {
 	floor.displayGrid[3][3] = '@';
 
 	std::string s;
-	print(floor);
+	printFloor(floor);
 	while (std::cin >> s) {
 		std::string ss = s;
-		if (check(ss)) {
+		if (validDirection(ss)) {
 			Posn pos = floor.player->position.getNew(ss);
 			if (floor.validTile(pos)) {
-				floor.displayGrid[floor.player->position.y - 1][floor.player->position.x - 1] = '.';
+				floor.displayGrid[floor.player->position.y - 1][floor.player->position.x - 1] = 
+				floor.defaultGrid[floor.player->position.y - 1][floor.player->position.x - 1];
 				floor.player->position = pos;
 				floor.displayGrid[pos.y - 1][pos.x - 1] = '@';
-				print(floor); 
+				printFloor(floor); 
 			} else {
-				std::cout << "Try again" << std::endl;
+				std::cout << "Move invalid" << std::endl;
 			}
 		} else {
 			std::cout << "Bad input" << std::endl;
 		}
 	}
-
-
 
 	delete play;
 }
