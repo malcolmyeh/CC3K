@@ -13,9 +13,9 @@ Todo (not in order):
 - [x] Map creation and player movement
 - [ ] Random generation of enemies, items, compass, stairs
 - [ ] Potion Buff Decorator on Player class
-- [ ]
-- [ ]
-- [ ]
+- [ ] 
+- [ ] 
+- [ ] 
 
 If there is time:
 - [ ] Merchant can sell items (ex: Broadsword gives permanent attack through multiple floors)
