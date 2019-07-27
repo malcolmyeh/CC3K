@@ -9,7 +9,7 @@ class Human : public Player {
 	public:
 		Human(int HP, int gold, Posn position);
 		~Human();
-		void takeDamage(int amount) override;
+		//void takeDamage(int amount) override;
 };
 
 #endif

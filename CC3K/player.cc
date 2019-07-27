@@ -26,12 +26,12 @@ std::string Player::dealDamage(Character * opponent){
 	std::string combatMsg;
 	std::string defender = opponent->getRace();
 	int attack = this->Atk;
-	int defense = opponent->getDef;
+	int defense = opponent->getDef();
 
 
 	amount = ceil((100/(100+defense)) * attack);
 
-	opponent->takeDamage(amount);
+	opponent->takeDamage((int)amount);
 	
 	combatMsg = "Player deals " + amount + " damage to " + defender + " (" + opponent->getHP() + "). ";
 	
@@ -47,4 +47,15 @@ std::string Player::dealDamage(Character * opponent){
 void Player::move(Posn position){
 	this->position.x = position.x;
 	this->position.y = position.y;
+}
+
+void Player::takeDamage(int amount){
+	if (this->barrier()){
+		this->HP -= ceil(amount / 2);
+	} else {
+		this->HP -= amount;
+	}
+	if (this->HP < 0){
+			this->HP = 0;
+	}
 }

@@ -15,13 +15,3 @@ Human::Human(int HP, int gold, Posn position) {
 Human::~Human() {}
 
 
-void Human::takeDamage(int amount){
-	if (this->barrier()){
-		this->HP -= ceil(amount / 2);
-	} else {
-		this->HP -= amount;
-	}
-	if (this->HP < 0){
-			this->HP = 0;
-	}
-}
