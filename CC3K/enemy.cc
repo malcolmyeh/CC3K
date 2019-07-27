@@ -22,24 +22,21 @@ bool Enemy::withinRange(Posn player){
 std::string Enemy::dealDamage(Character * opponent){
 	double amount;
 	std::string combatMsg;
-	std::string defender = opponent->getRace();
 	std::string attacker = this->race;
 
 	int attack = this->Atk;
-	int defense = opponent->getDef;
+	int defense = opponent->getDef();
 
-	
-	amount = ceil((100/(100+defense)) * attack);
+	amount = ceil((100.0/(100.0+defense)) * attack); //player takeDamage takes care of barrier suit
 
-	opponent->takeDamage(amount);
+	opponent->takeDamage((int)amount);
 	
-	combatMsg = attacker + " deals " + amount + " damage to " + defender + " (" + opponent->getHP() + "). ";
+	combatMsg = attacker + " deals " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
 	
 	if (opponent->getHP() == 0){
-		combatMsg += defender + " has been slain. You have earned " + opponent->getGold() + " gold.";
-		this->gold += opponent->getGold();
+		//std::cout << "DEAD" << std::endl;
+		combatMsg += "You have been slain.";
 	}
-
 
 	return combatMsg;
 }

@@ -11,7 +11,7 @@ class Enemy : public Character {
 		std::string dealDamage(Character * opponent); 
 		bool compass();
 		int cID();
-		bool withinRange(Player * player);
+		bool withinRange(Posn player);
 };
 
 

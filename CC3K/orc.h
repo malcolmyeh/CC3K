@@ -1,14 +1,14 @@
-#ifndef HUMAN_H
-#define HUMAN_H
+#ifndef ORC_H
+#define ORC_H
 
 #include "player.h"
 #include "posn.h"
 #include <cmath>
 
-class Human : public Player {
+class Orc : public Player {
 	public:
-		Human(int HP, int gold, Posn position);
-		~Human();
+		Orc(int HP, int gold, Posn position);
+		~Orc();
 		//void takeDamage(int amount) override;
 };
 
