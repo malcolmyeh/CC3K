@@ -1,9 +1,9 @@
 #ifndef GOLD_H
 #define GOLD_H
 
-#include "items.h"
+#include "item.h"
 
-class Gold {
+class Gold : public Item {
     private:
         int value;
         string type;

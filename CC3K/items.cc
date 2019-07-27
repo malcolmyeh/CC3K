@@ -1,6 +1,6 @@
-#include "items.h"
+#include "item.h"
 
 // Constructor
-Items::Items(Posn p) {
+Item::Item(Posn p) {
     this->p = p;
 }

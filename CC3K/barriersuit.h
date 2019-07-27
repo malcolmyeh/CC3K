@@ -1,9 +1,9 @@
 #ifndef BARRIERSUIT_H
 #define BARRIERSUIT_H
 
-#include "items.h"
+#include "item.h"
 
-class barrierSuit {
+class barrierSuit : public Item {
     public:
         barrierSuit(Posn p, Dragon *dragon);
         Dragon *dragon;
