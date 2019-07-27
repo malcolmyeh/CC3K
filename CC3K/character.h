@@ -23,9 +23,12 @@ class Character {
 		Posn getPosition();
 		std::string getRace();
 		char getSymbol();
-		virtual void move(Posn position);
+		//virtual void move(Posn position);
+		void move(Posn position); //do we need two different moves for player/enemy? can handle random movement in game core
 		virtual void takeDamage(int amount);
-		
+		//should we add back in dealDamage? to make it abstract class
+		/* an Animal class doesn’t have implementation of move() 
+		(assuming that all animals move), but all animals must know how to move. */
 
 };
 
