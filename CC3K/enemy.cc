@@ -27,11 +27,16 @@ std::string Enemy::dealDamage(Character * opponent){
 	int attack = this->Atk;
 	int defense = opponent->getDef();
 
-	amount = ceil((100/(100+defense)) * attack); //player takeDamage takes care of barrier suit
+	amount = ceil((100.0/(100.0+defense)) * attack); //player takeDamage takes care of barrier suit
 
 	opponent->takeDamage((int)amount);
 	
-	combatMsg = attacker + " deals " + amount + " damage to Player (" + opponent->getHP() + "). ";
+	combatMsg = attacker + " deals " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
 	
+	if (opponent->getHP() == 0){
+		//std::cout << "DEAD" << std::endl;
+		combatMsg += "You have been slain.";
+	}
+
 	return combatMsg;
 }

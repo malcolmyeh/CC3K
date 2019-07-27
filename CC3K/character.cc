@@ -35,3 +35,5 @@ void Character::takeDamage(int amount){
 		this->HP = 0;
 	}
 }
+
+void Character::move(Posn position){}

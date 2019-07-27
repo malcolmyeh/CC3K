@@ -23,7 +23,7 @@ class Character {
 		Posn getPosition();
 		std::string getRace();
 		char getSymbol();
-		virtual void move(Posn position) = 0;
+		virtual void move(Posn position);
 		virtual void takeDamage(int amount);
 		
 
