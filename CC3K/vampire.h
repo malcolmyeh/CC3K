@@ -4,7 +4,7 @@
 
 class Vampire : public Enemy {
 	public:
-		Vampire(Posn position);
+		Vampire(Posn position, bool hasCompass, int chamberID);
 		~Vampire();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
