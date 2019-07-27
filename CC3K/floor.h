@@ -48,7 +48,7 @@ public:
 	//void initFloor();
 	void generatePlayer();
 	void generateStair();
-	//void generateEnemies();
+	void generateEnemies();
 	//void generateItems();
 	void generateChamber();
 	void setDragons();
