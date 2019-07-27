@@ -25,6 +25,7 @@ class Character {
 		virtual void move(Posn position) = 0;
 		virtual std::string dealDamage(Character * opponent); 
 		virtual void takeDamage(int amount);
+		
 
 };
 
