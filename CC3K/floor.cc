@@ -90,16 +90,62 @@ void Floor::generateEnemies(int ds) {
 		int pos;
 		generatePosition(&pos, &id);
 		Enemy *e = new Dragon(pos, NULL, NULL, id);
+		this->enemies.pushback(e);
 	}
 	for (int i = 0; i < 20 - ds; i++) {
 		int num = rand() % 18;
+		int id;
+		int pos;
+		generatePosition(&pos, &id);
 		if (num <= 4) {
-			Enemy *e = new Werewolf()
+			Enemy *e = new Werewolf(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 7) {
+			Enemy *e = new Vampire(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 12) {
+			Enemy *e = new Goblin(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 14) {
+			Enemy *e = new Troll(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 16) {
+			Enemy *e = new Phoenix(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 18) {
+			Enemy *e = new Merchant(pos, id);
+			this->enemies.pushback(e);
 		}
 	}
 }
 
-//void Floor::generateItems(int &ds) {}
+void Floor::generateItems(int &ds) {
+	for (int i = 0; i < 10; i++) {
+		int num = rand() % 10;
+		int id;
+		int pos;
+		generatePosition(&pos, &id);
+		if (num <= 4) {
+			Enemy *e = new Werewolf(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 7) {
+			Enemy *e = new Vampire(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 12) {
+			Enemy *e = new Goblin(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 14) {
+			Enemy *e = new Troll(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 16) {
+			Enemy *e = new Phoenix(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 18) {
+			Enemy *e = new Merchant(pos, id);
+			this->enemies.pushback(e);
+		}
+	}
+}
 
 bool Floor::validMove(Posn pos) {
 	char t = this->displayGrid[pos.y - 1][pos.x - 1];

@@ -6,7 +6,7 @@
 #include "posn.h"
 #include "stair.h"
 #include "chamber.h"
-#include "item.h"
+//#include "item.h"
 #include "character.h"
 #include "enemy.h"
 #include "player.h"
