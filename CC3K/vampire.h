@@ -1,10 +1,10 @@
-#ifndef 
-#define 
+#ifndef VAMPIRE_H
+#define VAMPIRE_H
 #include "enemy.h"
 
 class Vampire : public Enemy {
 	public:
-		Vampire(Posn position, bool hasCompass, int chamberID);
+		Vampire(Posn position, int chamberID);
 		~Vampire();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/

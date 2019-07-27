@@ -1,10 +1,10 @@
-#ifndef 
-#define 
+#ifndef WEREWOLF_H
+#define WEREWOLF_H
 #include "enemy.h"
 
 class Werewolf : public Enemy {
 	public:
-		Werewolf(Posn position, bool hasCompass, int chamberID);
+		Werewolf(Posn position, int chamberID);
 		~Werewolf();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/

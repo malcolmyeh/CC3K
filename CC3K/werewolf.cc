@@ -1,5 +1,15 @@
 #include "werewolf.h"
 
-Werewolf::Werewolf(Posn position, int chamberID) : Atk(30), Def(5), HP(120), gold(1), race("Werewolf"), symbol('W'), hasCompass(false), chamberID(chamberID), position(position) {}
+Werewolf::Werewolf(Posn position, int chamberID){
+	this->Atk = 30;
+	this->Def = 5;
+	this->HP = 120;
+	this->gold = 1;
+	this->race = "Werewolf";
+	this->symbol = 'W';
+	this->hasCompass = false;
+	this->chamberID = chamberID;
+	this->position = position;
+}
 
 Werewolf::~Werewolf(){}

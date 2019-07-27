@@ -21,30 +21,139 @@ Floor::Floor() {
 }
 
 Floor::~Floor() {
-	/*for (enemy : *this->enemies) {
+	for (enemy : *this->enemies) {
 		delete enemy;
 	}
-	for (item : *this->items) {
-		delete item;
-	}
+	//for (item : *this->items) { delete item; }
 	for (chamber : *this->chambers) {
 		delete chamber;
-	}*/
+	}
+	delete this->player;
+	delete this->stair;
 }
 
-//void generateEnemies() {}
-
-/*void generateItems() {
-
+void Floor::generatePosition(int &id, Posn &pos) {
+	id = rand() % 5;
+	Chmaber c = chambers.at(id - 1);
+	Posn p;
+	do {
+		p = c.getPosition();
+	} while (!this->validTile(p));
+	pos = p;
 }
 
-void generateChamber() {
+void Floor::initFloor(char type) {
+	int id;
+	int ds;
+	srand(time(NULL));
+	generateChamber();
+	generatePlayer(type, &id);
+	generateStair(id);
+	generateItems(&ds);
+	generateEnemies(ds);
+}
 
-}*/
+void Floor::generateChamber() {
+	for(int i = 0; i < 5; i++) {
+		Chamber *c = new Chamber(i);
+		this->chambers.pushback(c);
+	}
+}
 
-bool Floor::validTile(Posn pos) {
+void Floor::generatePlayer(char type, int &id) {
+	Posn p;
+	generatePosition(&p, id)
+	if (type == 'h') {
+	 	this->player = new Human(140, 0, p);
+	} else if (type == 'o') {
+		this->player = new Orc(180, 0, p);
+	} else if (type == 'e') {
+		this->player = new Orc(140, 0, p);
+	} else if (type == 'd') {
+		this->player = new Orc(100, 0, p);
+	}
+	displayGrid[p.y - 1][p.x - 1] = '@';
+}
+
+void Floor::generateStair(int id) {
+	int id2;
+	Posn p;
+	do {
+		generatePosition(&p, &id2);
+	} while (id == id2);
+	this->stair = new Stair(p);
+}
+
+void Floor::generateEnemies(int ds) {
+	for (int i = 0; i < ds; i++) {
+		int id;
+		int pos;
+		generatePosition(&pos, &id);
+		Enemy *e = new Dragon(pos, NULL, NULL, id);
+		this->enemies.pushback(e);
+	}
+	for (int i = 0; i < 20 - ds; i++) {
+		int num = rand() % 18;
+		int id;
+		int pos;
+		generatePosition(&pos, &id);
+		if (num <= 4) {
+			Enemy *e = new Werewolf(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 7) {
+			Enemy *e = new Vampire(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 12) {
+			Enemy *e = new Goblin(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 14) {
+			Enemy *e = new Troll(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 16) {
+			Enemy *e = new Phoenix(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 18) {
+			Enemy *e = new Merchant(pos, id);
+			this->enemies.pushback(e);
+		}
+	}
+}
+
+void Floor::generateItems(int &ds) {
+	for (int i = 0; i < 10; i++) {
+		int num = rand() % 10;
+		int id;
+		int pos;
+		generatePosition(&pos, &id);
+		if (num <= 4) {
+			Enemy *e = new Werewolf(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 7) {
+			Enemy *e = new Vampire(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 12) {
+			Enemy *e = new Goblin(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 14) {
+			Enemy *e = new Troll(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 16) {
+			Enemy *e = new Phoenix(pos, id);
+			this->enemies.pushback(e);
+		} else if (num <= 18) {
+			Enemy *e = new Merchant(pos, id);
+			this->enemies.pushback(e);
+		}
+	}
+}
+
+bool Floor::validMove(Posn pos) {
 	char t = this->displayGrid[pos.y - 1][pos.x - 1];
 	return t == '.' || t == '+' || t == '#';
+}
+
+bool Floor::validTile(Posn pos) {
+	return this->displayGrid[pos.y - 1][pos.x - 1] == '.';
 }
 
 void Floor::setVisible(bool visible) {

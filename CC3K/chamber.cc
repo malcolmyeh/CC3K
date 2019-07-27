@@ -34,7 +34,7 @@ Chamber::Chamber(int num) {
 	}
 }
 
-bool checkRange(Posn p) {
+bool Chamber::checkRange(Posn p) {
 	int x = p.x;
 	int y = p.y;
 	if (num == 1 || num == 2 || num == 4) {
@@ -61,3 +61,13 @@ bool checkRange(Posn p) {
 	return false;
 }
 
+Posn Chamber::getPosition() {
+	Posn p;
+	do {
+		r = rand() % maxRow;
+		c = rand() % maxCol;
+		p.x = c;
+		p.y = r;
+	} while (!checkRange(p));
+	return p;
+}

@@ -29,18 +29,14 @@ char Character::getSymbol(){
 	return this->symbol;
 }
 
-std::string Character::dealDamage(Character * opponent){
-	int amount;
-	std::string combatLog;
-	// add implementation later
-	opponent->takeDamage(amount);
-	combatLog = "test";
-	return combatLog;
-}
-
 void Character::takeDamage(int amount){
 	this->HP -= amount;
 	if (this->HP < 0){
 		this->HP = 0;
 	}
+}
+
+void Character::move(Posn position){
+	this->position.x = position.x;
+	this->position.y = position.y;
 }

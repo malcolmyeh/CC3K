@@ -1,9 +1,28 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
-#include "player.h"
+#include <cstdlib>
+#include <ctime>
 #include "posn.h"
 #include "stair.h"
+#include "chamber.h"
+//#include "item.h"
+#include "character.h"
+#include "enemy.h"
+#include "player.h"
+#include "human.h"
+#include "orc.h"
+#include "elf.h"
+#include "dwarf.h"
+#include "goblin.h"
+//#include "dragon.h"
+#include "troll.h"
+#include "merchant.h"
+#include "phoenix.h"
+#include "vampire.h"
+#include "werewolf.h"
+#include "potion.h"
+#include "gold.h"
 
 class Floor {
 
@@ -15,9 +34,9 @@ class Floor {
 
 public:
 	char defaultGrid[25][79];
-	//std::vector<Enemy *> enemies;
-	//std::vector<Item *> items;
-	//std::vector<Chambers *> chambers;
+	std::vector<Enemy *> enemies;
+	std::vector<Item *> items;
+	std::vector<Chamber *> chambers;
 	char displayGrid[25][79];
 	Stair * stair;
 	Player * player;
@@ -26,10 +45,16 @@ public:
 	Floor();
 	~Floor();
 
-	//void generateEnemies();
+	//void initFloor();
+	void generatePlayer();
+	void generateStair();
+	void generateEnemies();
 	//void generateItems();
-	//void generateChamber();
+	void generateChamber();
+	void setDragons();
+	void generatePosition(int &id, Posn &pos);
 	bool validTile(Posn pos);
+	bool validMove(Posn pos);
 	void setVisible(bool visible);
 	void setLevel(int level);
 	void setWon(bool won);

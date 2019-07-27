@@ -8,9 +8,10 @@ class Enemy : public Character {
 		bool hasCompass;
 		int chamberID;
 	public:
+		std::string dealDamage(Character * opponent); 
 		bool compass();
 		int cID();
-		bool withinRange(Player * player);
+		bool withinRange(Posn player);
 };
 
 
