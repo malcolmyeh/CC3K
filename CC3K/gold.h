@@ -7,7 +7,6 @@ class Gold {
         string type;
         bool protected;
     public:
-        Gold(Posn p);
         int getValue();
         string getType();
         bool isProtected();
