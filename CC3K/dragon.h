@@ -10,7 +10,7 @@ class Dragon : public Character {
 		DragonHoard * dragonHoard;
 		BarrierSuit * barrierSuit;
 	public:
-		Dragon(Posn position, DragonHoard * dragonHoard, BarrierSuit * barrierSuit);
+		Dragon(Posn position, DragonHoard * dragonHoard, BarrierSuit * barrierSuit, int chamberID);
 		~Dragon();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/

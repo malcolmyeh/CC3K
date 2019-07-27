@@ -2,6 +2,7 @@
 #define CHARACTER_H
 #include <string>
 #include "posn.h"
+#include <cmath>
 
 
 class Character {
@@ -23,7 +24,7 @@ class Character {
 		std::string getRace();
 		char getSymbol();
 		virtual void move(Posn position) = 0;
-		virtual std::string dealDamage(Character * opponent); 
+		//virtual std::string dealDamage(Character * opponent); 
 		virtual void takeDamage(int amount);
 		
 

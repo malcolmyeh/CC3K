@@ -4,7 +4,7 @@
 
 class Werewolf : public Enemy {
 	public:
-		Werewolf(Posn position);
+		Werewolf(Posn position, int chamberID);
 		~Werewolf();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
