@@ -15,6 +15,7 @@ class Player : public Character {
 		bool barrier();
 		int chamber();
 		int getMaxHP();
+		std::string dealDamage(Character * opponent); 
 		void move(Posn position) override;
 };
 

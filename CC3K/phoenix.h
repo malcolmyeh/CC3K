@@ -4,7 +4,7 @@
 
 class Phoenix : public Enemy {
 	public:
-		Phoenix(Posn position, bool hasCompass, int chamberID);
+		Phoenix(Posn position, int chamberID);
 		~Phoenix();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
