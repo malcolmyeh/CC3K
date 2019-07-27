@@ -36,4 +36,7 @@ void Character::takeDamage(int amount){
 	}
 }
 
-void Character::move(Posn position){}
+void Character::move(Posn position){
+	this->position.x = position.x;
+	this->position.y = position.y;
+}
