@@ -1,6 +1,8 @@
 #ifndef GOLD_H
 #define GOLD_H
 
+#include "items.h"
+
 class Gold {
     private:
         int value;
