@@ -1,4 +1,5 @@
 #include "floor.h"
+#include <iostream>
 
 Floor::Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
 	this->level = level;
@@ -8,6 +9,7 @@ Floor::Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
 	this->barrierSpawned = spawned;
 	this->player = player;
 	this->stair = NULL;
+	this->suit = NULL;
 }
 
 Floor::Floor() {
@@ -18,17 +20,18 @@ Floor::Floor() {
 	this->barrierSpawned = false;
 	this->player = NULL;
 	this->stair = NULL;
+	this->suit = NULL;
 }
 
 Floor::~Floor() {
-	for (Enemy *enemy : this->enemies) {
-		delete enemy;
+	for (int i = 0; i < enemies.size(); ++i) {
+		delete enemies.at(i);
 	}
-	for (Item *item : this->items) { 
-		delete item; 
+	for (int i = 0; i < items.size(); ++i) { 
+		delete items.at(i); 
 	}
-	for (Chamber *chamber : this->chambers) {
-		delete chamber;
+	for (int i = 0; i < chambers.size(); ++i) {
+		delete chambers.at(i);
 	}
 	delete this->player;
 	delete this->stair;
@@ -59,15 +62,24 @@ void Floor::initFloor(char type) {
 	int id;
 	int dragons;
 	srand(time(NULL));
+
 	generateChamber();
+
 	generatePlayer(type, id);
+
 	generateStair(id);
+
 	generateItems(dragons);
+
 	generateEnemies(dragons);
+
+
+	std::cout << "init floor clear" << std::endl;
+
 }
 
 void Floor::generateChamber() {
-	for(int i = 0; i < 5; i++) {
+	for(int i = 1; i < 6; i++) {
 		Chamber *c = new Chamber(i);
 		this->chambers.push_back(c);
 	}
@@ -85,7 +97,7 @@ void Floor::generatePlayer(char type, int &id) {
 	} else if (type == 'd') {
 		this->player = new Dwarf(100, 0, p);
 	}
-	displayGrid[p.y - 1][p.x - 1] = '@';
+	displayGrid[p.y][p.x] = '@';
 }
 
 void Floor::generateStair(int id) {
@@ -123,16 +135,18 @@ void Floor::generateEnemies(int dragons) {
 			e = new Merchant(pos, id);
 			this->enemies.push_back(e);
 		}
-		displayGrid[pos.y - 1][pos.x - 1] = e->getSymbol();
+		displayGrid[pos.y][pos.x] = e->getSymbol();
 	}
 }
 
 void Floor::generateItems(int &dragons) {
 	for (int j = 0; j < 10; j++) {
+
 		int num = rand() % 6 + 1;
 		int id;
 		Posn pos;
 		generatePosition(id, pos);
+
 		Item *i;
 		if (num == 1) {
 			i = new Potion(pos, "RH");
@@ -151,11 +165,12 @@ void Floor::generateItems(int &dragons) {
 			this->items.push_back(i);
 		} else if (num == 6) {
 			i = new Potion(pos, "WD");
-			this->items.push_back(i);
-		}
-		displayGrid[pos.y - 1][pos.x - 1] = i->getSymbol();
+			this->items.push_back(i);		}
+
+		displayGrid[pos.y][pos.x] = i->getSymbol();
 	}
 	for (int j = 0; j < 6; j++) {
+
 		int num = rand() % 8 + 1;
 		int id;
 		Posn pos;
@@ -176,34 +191,36 @@ void Floor::generateItems(int &dragons) {
 			dh->setDragon(e);
 			this->enemies.push_back(e);
 			++dragons;
-			displayGrid[dpos.y - 1][dpos.x - 1] = e->getSymbol();
+			displayGrid[dpos.y][dpos.x] = e->getSymbol();
 		}
-		displayGrid[pos.y - 1][pos.x - 1] = i->getSymbol();
+		displayGrid[pos.y][pos.x] = i->getSymbol();
 	}
 	int num = rand() % (6 - this->level);
 	if (num == 0 && !this->barrierSpawned) {
+
 		int id;
 		Posn pos;
 		generatePosition(id, pos);
 		this->suit = new barrierSuit(pos, NULL);
 		this->barrierSpawned = true;
-		displayGrid[pos.y - 1][pos.x - 1] = this->suit->getSymbol();
+		displayGrid[pos.y][pos.x] = this->suit->getSymbol();
 		Posn dpos = dragonPosition(pos);
 		Enemy *e = new Dragon(dpos, NULL, this->suit, id);
 		this->suit->setDragon(e);
 		this->enemies.push_back(e);
 		++dragons;
-		displayGrid[dpos.y - 1][dpos.x - 1] = e->getSymbol();
+		displayGrid[dpos.y][dpos.x] = e->getSymbol();
 	}
+	std::cout << "generate items clear" << std::endl;
 }
 
 bool Floor::validMove(Posn pos) {
-	char t = this->displayGrid[pos.y - 1][pos.x - 1];
+	char t = this->displayGrid[pos.y][pos.x];
 	return t == '.' || t == '+' || t == '#';
 }
 
 bool Floor::validTile(Posn pos) {
-	return this->displayGrid[pos.y - 1][pos.x - 1] == '.';
+	return this->displayGrid[pos.y][pos.x] == '.';
 }
 
 void Floor::setVisible(bool visible) {

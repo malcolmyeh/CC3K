@@ -7,10 +7,12 @@
 #include "character.h"
 #include "player.h"
 #include "human.h"
+#include <string>
+#include <cstdlib>
 
 
 // Output the floor on the screen
-void printFloor(Floor floor);
+void printFloor(Floor *floor);
 
 //Check if valid direction
 bool validDirection(std::string s);
