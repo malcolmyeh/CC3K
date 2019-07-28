@@ -1,9 +1,13 @@
 #ifndef GOLD_H
 #define GOLD_H
 
-#include "items.h"
+#include "item.h"
 
+<<<<<<< HEAD
 class Gold: public Items {
+=======
+class Gold : public Item {
+>>>>>>> 2a1a16f7031737762740e6e37f2a9650d5691ddb
     private:
         int value;
         std::string type;
