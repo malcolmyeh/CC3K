@@ -24,7 +24,9 @@ Floor::~Floor() {
 	for (enemy : *this->enemies) {
 		delete enemy;
 	}
-	//for (item : *this->items) { delete item; }
+	for (item : *this->items) { 
+		delete item; 
+	}
 	for (chamber : *this->chambers) {
 		delete chamber;
 	}
@@ -159,16 +161,14 @@ void Floor::generateItems(int &ds) {
 		} else if (num == 8) {
 			Item *i = new dragonHoard(pos, NULL);
 			this->items.pushback(i);
+			++ds;
 		}
 	}
+	int num = rand() % 
 }
 
 void Floor::setDragons() {
-
-}
-
-void resetFloor() {
-
+	for()
 }
 
 bool Floor::validMove(Posn pos) {
