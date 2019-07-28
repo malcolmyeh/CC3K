@@ -4,13 +4,13 @@ cc3k: main.o posn.o stair.o chamber.o floor.o character.o player.o enemy.o human
 posn.o: posn.cc posn.h
 		g++ -std=c++14 -Werror=vla -c posn.cc
 
-stair.o: stair.cc stair.h
+stair.o: stair.cc stair.h posn.h
 		g++ -std=c++14 -Werror=vla -c stair.cc
 
 chamber.o: chamber.cc chamber.h posn.h
 		g++ -std=c++14 -Werror=vla -c chamber.cc
 
-character.o: character.cc character.h
+character.o: character.cc character.h posn.h
 		g++ -std=c++14 -Werror=vla -c character.cc
 
 player.o: player.cc character.h player.h
@@ -52,7 +52,7 @@ werewolf.o: werewolf.cc werewolf.h enemy.h
 dragon.o: dragon.cc dragon.h enemy.h barriersuit.h gold.h
 		g++ -std=c++14 -Werror=vla -c dragon.cc
 
-item.o: item.cc item.h
+item.o: item.cc item.h posn.h
 		g++ -std=c++14 -Werror=vla -c item.cc
 
 gold.o: gold.cc gold.h item.h

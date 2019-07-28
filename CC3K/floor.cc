@@ -81,9 +81,9 @@ void Floor::generatePlayer(char type, int &id) {
 	} else if (type == 'o') {
 		this->player = new Orc(180, 0, p);
 	} else if (type == 'e') {
-		this->player = new Orc(140, 0, p);
+		this->player = new Elf(140, 0, p);
 	} else if (type == 'd') {
-		this->player = new Orc(100, 0, p);
+		this->player = new Dwarf(100, 0, p);
 	}
 	displayGrid[p.y - 1][p.x - 1] = '@';
 }
