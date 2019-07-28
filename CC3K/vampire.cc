@@ -13,3 +13,34 @@ Vampire::Vampire(Posn position, int chamberID){
 }
 
 Vampire::~Vampire(){}
+
+std::string Vampire::dealDamage(Character * opponent){
+	double amount;
+	double lifesteal;
+
+	std::string combatMsg;
+	std::string attacker = this->race;
+
+	int attack = this->Atk;
+	int defense = opponent->getDef();
+
+	if (rand() % 2 == 0){
+		combatMsg = attacker + "'s attack missed. ";
+		return combatMsg;
+	}
+
+	amount = ceil((100.0/(100.0+defense)) * attack);
+	lifesteal = ceil(amount * 0.25);
+
+	opponent->takeDamage((int)amount);
+	
+	this->HP += ((int)lifesteal);
+
+	combatMsg = attacker + " deals " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
+	combatMsg += "Vampire lifesteals for " + std::to_string((int)lifesteal) + " HP (HP: " + std::to_string(this->HP) + "). ";
+	if (opponent->getHP() == 0){
+		combatMsg += "You have been slain.";
+	}
+
+	return combatMsg;
+}

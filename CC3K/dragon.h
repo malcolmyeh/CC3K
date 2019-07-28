@@ -12,8 +12,10 @@ class Dragon : public Character {
 	public:
 		Dragon(Posn position, DragonHoard * dragonHoard, BarrierSuit * barrierSuit, int chamberID);
 		~Dragon();
+		void setPos(Posn pos);
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
+		std::string dealDamage(Character * opponent) override;
 };
 
 #endif

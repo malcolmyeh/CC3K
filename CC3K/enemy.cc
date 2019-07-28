@@ -1,5 +1,5 @@
 #include "enemy.h"
-
+#include <iostream>
 bool Enemy::compass(){
 	return this->hasCompass;
 }
@@ -27,16 +27,24 @@ std::string Enemy::dealDamage(Character * opponent){
 	int attack = this->Atk;
 	int defense = opponent->getDef();
 
-	amount = ceil((100.0/(100.0+defense)) * attack); //player takeDamage takes care of barrier suit
+	if (rand() % 2 == 0){
+		combatMsg = attacker + "'s attack missed. ";
+		return combatMsg;
+	}
+	amount = ceil((100.0/(100.0+defense)) * attack);
 
 	opponent->takeDamage((int)amount);
 	
 	combatMsg = attacker + " deals " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
 	
 	if (opponent->getHP() == 0){
-		//std::cout << "DEAD" << std::endl;
 		combatMsg += "You have been slain.";
 	}
 
 	return combatMsg;
 }
+
+void Enemy::setCompass(bool compass){
+	this->hasCompass = compass;
+}
+

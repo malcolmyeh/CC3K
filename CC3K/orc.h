@@ -10,6 +10,7 @@ class Orc : public Player {
 		Orc(int HP, int gold, Posn position);
 		~Orc();
 		//void takeDamage(int amount) override;
+		std::string dealDamage(Character * opponent) override;
 };
 
 #endif
