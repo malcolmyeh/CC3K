@@ -3,14 +3,14 @@
 
 #include "items.h"
 
-class Gold {
+class Gold: public Items {
     private:
         int value;
-        string type;
+        std::string type;
         bool protected;
     public:
         int getValue();
-        string getType();
+        std::string getType();
         bool isProtected();
         void setType(string type);
         void setProtection(bool x);

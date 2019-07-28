@@ -4,12 +4,12 @@
 #include "items.h"
 #include <string>
 
-class Potion {
+class Potion: public Items {
     private:
-        string type;
+        std::string type;
     public:
         Potion(Posn p);
-        string getPotion();
+        std::string getPotion();
 };
 
 #endif

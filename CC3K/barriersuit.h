@@ -3,7 +3,7 @@
 
 #include "items.h"
 
-class barrierSuit {
+class barrierSuit: public Items {
     public:
         barrierSuit(Posn p, Dragon *dragon);
         Dragon *dragon;
