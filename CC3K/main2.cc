@@ -3,12 +3,26 @@
 #include <fstream>
 #include <string>
 #include "posn.h"
-#include "floor.h"
+#include "stair.h"
+#include "chamber.h"
+#include "item.h"
 #include "character.h"
+#include "enemy.h"
 #include "player.h"
 #include "human.h"
-#include "game.h"
-
+#include "orc.h"
+#include "elf.h"
+#include "dwarf.h"
+#include "goblin.h"
+#include "dragon.h"
+#include "troll.h"
+#include "merchant.h"
+#include "phoenix.h"
+#include "vampire.h"
+#include "werewolf.h"
+#include "potion.h"
+#include "gold.h"
+#include "barriersuit"
 
 
 int main(void) {

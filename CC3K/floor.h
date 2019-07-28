@@ -6,7 +6,7 @@
 #include "posn.h"
 #include "stair.h"
 #include "chamber.h"
-//#include "item.h"
+#include "item.h"
 #include "character.h"
 #include "enemy.h"
 #include "player.h"
@@ -23,6 +23,7 @@
 #include "werewolf.h"
 #include "potion.h"
 #include "gold.h"
+#include "barriersuit"
 
 class Floor {
 
@@ -40,7 +41,7 @@ public:
 	char displayGrid[25][79];
 	Stair * stair;
 	Player * player;
-	barrierSuit *suit;
+	Item *suit;
 
 	Floor(int level, bool won, bool hostile, bool spawned, Player * player);
 	Floor();
