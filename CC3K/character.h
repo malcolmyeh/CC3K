@@ -5,6 +5,7 @@
 #include <cmath>
 
 
+<<<<<<< HEAD
 class Character {
 	protected:
 		int Atk;
@@ -28,6 +29,32 @@ class Character {
 		virtual void takeDamage(int amount);
 		virtual std::string dealDamage(Character * opponent) = 0;
 		virtual ~Character() {};
+=======
+class Character
+{
+protected:
+    int Atk;
+    int Def;
+    int HP;
+    int gold;
+    std::string race;
+    char symbol;
+    bool stunned;
+public:
+    void getStunned();
+    Posn position;
+    void updateGold(int amount);
+    virtual int getAtk();
+    virtual int getDef();
+    virtual int getHP();
+    virtual int getGold();
+    Posn getPosition();
+    std::string getRace();
+    char getSymbol();
+    void move(Posn position);
+    virtual void takeDamage(int amount);
+    virtual std::string dealDamage(Character *opponent) = 0;
+>>>>>>> ead3794945c16689f9e30b5613204eac08dfa5bc
 };
 
 

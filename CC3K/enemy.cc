@@ -19,14 +19,20 @@ bool Enemy::withinRange(Posn player){
 	return false;
 }
 
+
 std::string Enemy::dealDamage(Character * opponent){
+
 	double amount;
 	std::string combatMsg;
 	std::string attacker = this->race;
 
 	int attack = this->Atk;
 	int defense = opponent->getDef();
-
+	if (this->stunned){
+		this->stunned = false;
+		combatMsg = attacker + " is stunned. ";
+		return combatMsg;
+	}	
 	if (rand() % 2 == 0){
 		combatMsg = attacker + "'s attack missed. ";
 		return combatMsg;
