@@ -1,6 +1,6 @@
 #include "dragon.h"
 
-<<<<<<< HEAD
+
 Dragon::Dragon(Posn position, dragonHoard *hoard, barrierSuit *suit, int chamberID){
 	this->Atk = 20;
 	this->Def = 20;
@@ -13,43 +13,17 @@ Dragon::Dragon(Posn position, dragonHoard *hoard, barrierSuit *suit, int chamber
 	this->position = position;
 	this->hoard = hoard;
 	this->suit = suit;
-=======
-Dragon::Dragon(Posn position, Item *hoard, Item *suit, int chamberID)
-{
-    this->Atk = 20;
-    this->Def = 20;
-    this->HP = 150;
-    this->gold = 0;
-    this->race = "Dragon";
-    this->symbol = 'D';
-    this->hasCompass = false;
-    this->chamberID = chamberID;
-    this->position = position;
-    this->hoard = hoard;
-    this->suit = suit;
->>>>>>> ead3794945c16689f9e30b5613204eac08dfa5bc
 }
 
 Dragon::~Dragon() {}
 
 
-<<<<<<< HEAD
 dragonHoard *Dragon::getHoard() {
 	return this->hoard;
 }
 
 barrierSuit *Dragon::getSuit() {
 	return this->suit;
-=======
-Item *Dragon::getHoard()
-{
-    return this->hoard;
-}
-
-Item *Dragon::getSuit()
-{
-    return this->suit;
->>>>>>> ead3794945c16689f9e30b5613204eac08dfa5bc
 }
 
 void Dragon::setPos(Posn pos)
