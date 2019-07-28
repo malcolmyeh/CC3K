@@ -2,13 +2,12 @@
 #define PHOENIX_H
 #include "enemy.h"
 
-class Phoenix : public Enemy {
-	public:
-		Phoenix(Posn position, int chamberID);
-		~Phoenix();
-		/*void dealDamage(Character * opponent) override;
-		void takeDamage(amount Integer) override;*/
-		std::string dealDamage(Character * opponent) override;
+class Phoenix : public Enemy
+{
+public:
+    Phoenix(Posn position, int chamberID);
+    ~Phoenix();
+    std::string dealDamage(Character *opponent) override;
 };
 
 #endif

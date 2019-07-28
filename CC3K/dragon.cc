@@ -1,29 +1,32 @@
 #include "dragon.h"
 
 
-Dragon::Dragon(Posn position, dragonHoard *hoard, barrierSuit *suit, int chamberID){
-	this->Atk = 20;
-	this->Def = 20;
-	this->HP = 150;
-	this->gold = 0;
-	this->race = "Dragon";
-	this->symbol = 'D';
-	this->hasCompass = false;
-	this->chamberID = chamberID;
-	this->position = position;
-	this->hoard = hoard;
-	this->suit = suit;
+Dragon::Dragon(Posn position, dragonHoard *hoard, barrierSuit *suit, int chamberID)
+{
+    this->Atk = 20;
+    this->Def = 20;
+    this->HP = 150;
+    this->gold = 0;
+    this->race = "Dragon";
+    this->symbol = 'D';
+    this->hasCompass = false;
+    this->chamberID = chamberID;
+    this->position = position;
+    this->hoard = hoard;
+    this->suit = suit;
 }
 
 Dragon::~Dragon() {}
 
 
-dragonHoard *Dragon::getHoard() {
-	return this->hoard;
+dragonHoard *Dragon::getHoard()
+{
+    return this->hoard;
 }
 
-barrierSuit *Dragon::getSuit() {
-	return this->suit;
+barrierSuit *Dragon::getSuit()
+{
+    return this->suit;
 }
 
 void Dragon::setPos(Posn pos)
@@ -33,11 +36,9 @@ void Dragon::setPos(Posn pos)
 
 std::string Dragon::dealDamage(Character *opponent)
 {
-
     double amount;
     std::string combatMsg;
     std::string attacker = this->race;
-
     int attack = this->Atk;
     int defense = opponent->getDef();
     if (this->stunned)
@@ -76,9 +77,6 @@ std::string Dragon::dealDamage(Character *opponent)
         opponent->takeDamage((int)amount);
         combatMsg += attacker + " deals " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
     }
-
-
-
 
     if (opponent->getHP() == 0)
     {
