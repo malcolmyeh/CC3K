@@ -24,5 +24,5 @@ If there is time:
 - Lifesteal item (override dealDamage so it heals for % of damage dealt)
 - Bow and Arrow (attack range becomes 2 instead of 1), probably hard to implement though
 - [ ] Lottery machine: spawns in random level, allows player to gamble HP or Gold for more Gold
-- [ ] BLOOD! When enemy dies, colour the tile '.' RED' 
+- [ ] BLOOD! When enemy dies, colour the tile '.' RED
 

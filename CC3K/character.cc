@@ -40,3 +40,7 @@ void Character::move(Posn position){
 	this->position.x = position.x;
 	this->position.y = position.y;
 }
+
+void Character::updateGold(int amount){
+	this->gold += amount;
+}

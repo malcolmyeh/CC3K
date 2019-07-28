@@ -6,8 +6,10 @@
 class Item {
     protected:
         char symbol;
-    public:
         Posn p;
+    public:
+    	char getSymbol();
+    	Posn getPosition();
 };
 
 #endif

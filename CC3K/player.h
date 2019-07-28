@@ -9,15 +9,13 @@ class Player : public Character {
 		int curChamber;
 		bool hasBarrier;
 	public:
-
 		virtual Player * getPlayer();
-		void updateGold(int amount);
+		
 		bool barrier();
 		int chamber();
 		int getMaxHP();
-		virtual std::string dealDamage(Character * opponent);
+		virtual std::string dealDamage(Character * opponent) override;
 		void takeDamage(int amount) override;
-		void move(Posn position) override;
 };
 
 #endif

@@ -8,6 +8,7 @@ class Werewolf : public Enemy {
 		~Werewolf();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
+		std::string dealDamage(Character * opponent) override;
 };
 
 #endif

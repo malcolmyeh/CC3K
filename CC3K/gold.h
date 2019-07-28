@@ -6,31 +6,33 @@
 class Gold : public Item {
     private:
         int value;
-        std::string type;
         bool guarded;
+        std::string type;
     public:
         int getValue();
-        std::string getType();
         bool isGuarded();
-        void setType(std::string type);
         void setGuarded(bool x);
         void setValue(int x);
+        std::string getType();
 };
 
 class normalHoard: public Gold {
     public:
-        normalHoard(Posn p);
+        normalHoard(Posn p, std::string type);
 };
 
 class smallHoard: public Gold {
     public:
-        smallHoard(Posn p);
+        smallHoard(Posn p, std::string type);
 };
 
 class dragonHoard: public Gold {
+    private:
+        Enemy *dragon;
     public:
-        Dragon *dragon;
-        dragonHoard(Posn p, Dragon *dragon);
+        dragonHoard(Posn p, std::string type, Enemy *dragon);
+        void setDragon(Enemy *dragon);
+        Enemy *getDragon();
 };
 
 #endif

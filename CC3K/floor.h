@@ -15,7 +15,7 @@
 #include "elf.h"
 #include "dwarf.h"
 #include "goblin.h"
-//#include "dragon.h"
+#include "dragon.h"
 #include "troll.h"
 #include "merchant.h"
 #include "phoenix.h"
@@ -40,18 +40,18 @@ public:
 	char displayGrid[25][79];
 	Stair * stair;
 	Player * player;
+	barrierSuit *suit;
 
 	Floor(int level, bool won, bool hostile, bool spawned, Player * player);
 	Floor();
 	~Floor();
 
-	//void initFloor();
-	void generatePlayer();
-	void generateStair();
-	void generateEnemies();
-	//void generateItems();
+	void initFloor(char type);
+	void generatePlayer(char type, int &id);
+	void generateStair(int id);
+	void generateEnemies(int &dragons);
+	void generateItems(int dragons);
 	void generateChamber();
-	void setDragons();
 	void generatePosition(int &id, Posn &pos);
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
