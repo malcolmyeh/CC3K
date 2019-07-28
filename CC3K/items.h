@@ -3,11 +3,12 @@
 
 #include "posn.h"
 
-class Item {
+class Items {
     protected:
         char symbol;
     public:
         Posn p;
+        Items(Posn p);
 };
 
 #endif

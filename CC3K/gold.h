@@ -6,14 +6,14 @@
 class Gold : public Item {
     private:
         int value;
-        string type;
-        bool protected;
+        std::string type;
+        bool guarded;
     public:
         int getValue();
-        string getType();
-        bool isProtected();
-        void setType(string type);
-        void setProtection(bool x);
+        std::string getType();
+        bool isGuarded();
+        void setType(std::string type);
+        void setGuarded(bool x);
         void setValue(int x);
 };
 

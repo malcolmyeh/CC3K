@@ -3,15 +3,18 @@
 // Constructors
 normalHoard::normalHoard(Posn p) {
     this->p = p;
+    this->symbol = 'G';
 }
 
 smallHoard::smallHoard(Posn p) {
     this->p = p;
+    this->symbol = 'G';
 }
 
 dragonHoard::dragonHoard(Posn p, Dragon *dragon) {
     this->p = p;
     this->dragon = dragon;
+    this->symbol = 'G';
 }
 
 // Accessors
@@ -19,21 +22,21 @@ int Gold::getValue() {
     return this->value;
 }
 
-string Gold::getType() {
+std::string Gold::getType() {
     return this->type;
 }
 
-bool Gold::isProtected() {
-    return this->isProtected();
+bool Gold::isGuarded() {
+    return this->guarded;
 }
 
 // Mutators
-void Gold::setType(string type) {
+void Gold::setType(std::string type) {
     this->type = type;
 }
 
-void Gold::setProtection(bool x) {
-    this->protected = x;
+void Gold::setGuarded(bool x) {
+    this->guarded = x;
 }
 
 void Gold::setValue(int x) {

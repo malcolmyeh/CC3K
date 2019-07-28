@@ -8,6 +8,6 @@ Potion::Potion(Posn p, std::string type) {
 }
 
 // Accessor
-string Potion::getPotion() {
+std::string Potion::getPotion() {
     return this->type;
 }
