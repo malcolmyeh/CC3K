@@ -1,15 +1,15 @@
 #ifndef POTION_H
 #define POTION_H
 
-#include "items.h"
+#include "item.h"
 #include <string>
 
-class Potion {
+class Potion : public Item {
     private:
-        string type;
+        std::string type;
     public:
-        Potion(Posn p);
-        string getPotion();
+        Potion(Posn p, std::string type);
+        std::string getPotion();
 };
 
 #endif

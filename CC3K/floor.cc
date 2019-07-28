@@ -34,7 +34,7 @@ Floor::~Floor() {
 
 void Floor::generatePosition(int &id, Posn &pos) {
 	id = rand() % 5;
-	Chmaber c = chambers.at(id - 1);
+	Chamber c = chambers.at(id - 1);
 	Posn p;
 	do {
 		p = c.getPosition();
@@ -121,30 +121,54 @@ void Floor::generateEnemies(int ds) {
 
 void Floor::generateItems(int &ds) {
 	for (int i = 0; i < 10; i++) {
-		int num = rand() % 10;
+		int num = rand() % 6;
 		int id;
 		int pos;
 		generatePosition(&pos, &id);
-		if (num <= 4) {
-			Enemy *e = new Werewolf(pos, id);
-			this->enemies.pushback(e);
-		} else if (num <= 7) {
-			Enemy *e = new Vampire(pos, id);
-			this->enemies.pushback(e);
-		} else if (num <= 12) {
-			Enemy *e = new Goblin(pos, id);
-			this->enemies.pushback(e);
-		} else if (num <= 14) {
-			Enemy *e = new Troll(pos, id);
-			this->enemies.pushback(e);
-		} else if (num <= 16) {
-			Enemy *e = new Phoenix(pos, id);
-			this->enemies.pushback(e);
-		} else if (num <= 18) {
-			Enemy *e = new Merchant(pos, id);
-			this->enemies.pushback(e);
+		if (num == 1) {
+			Item *i = new Potion(pos, "RH");
+			this->items.pushback(i);
+		} else if (num == 2) {
+			Item *i = new Potion(pos, "BA");
+			this->items.pushback(i);
+		} else if (num == 3) {
+			Item *i = new Potion(pos, "BD");
+			this->items.pushback(i);
+		} else if (num == 4) {
+			Item *i = new Potion(pos, "PH");
+			this->items.pushback(i);
+		} else if (num == 5) {
+			Item *i = new Potion(pos, "WA");
+			this->items.pushback(i);
+		} else if (num == 6) {
+			Item *i = new Potion(pos, "WD");
+			this->items.pushback(i);
 		}
 	}
+	for (int i = 0; i < 6; i++) {
+		int num = rand() % 8;
+		int id;
+		int pos;
+		generatePosition(&pos, &id);
+		if (num <= 5) {
+			Item *i = new normalHoard(pos);
+			this->items.pushback(i);
+		} else if (num <= 7) {
+			Item *i = new smallHoard(pos);
+			this->items.pushback(i);
+		} else if (num == 8) {
+			Item *i = new dragonHoard(pos, NULL);
+			this->items.pushback(i);
+		}
+	}
+}
+
+void Floor::setDragons() {
+
+}
+
+void resetFloor() {
+
 }
 
 bool Floor::validMove(Posn pos) {
