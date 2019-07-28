@@ -4,16 +4,19 @@
 normalHoard::normalHoard(Posn p) {
     this->p = p;
     this->symbol = 'G';
+    this->type = "normalHoard";
 }
 
 smallHoard::smallHoard(Posn p) {
     this->p = p;
     this->symbol = 'G';
+    this->type = "smallHoard";
 }
 
 dragonHoard::dragonHoard(Posn p, Enemy *dragon) {
     this->p = p;
     this->dragon = dragon;
+    this->type = "dragonHoard";
     this->symbol = 'G';
 }
 

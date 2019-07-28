@@ -2,9 +2,10 @@
 #define GOLD_H
 
 #include "item.h"
+#include "enemy.h"
 
 class Gold : public Item {
-    private:
+    protected:
         int value;
         bool guarded;
         std::string type;
@@ -18,19 +19,19 @@ class Gold : public Item {
 
 class normalHoard: public Gold {
     public:
-        normalHoard(Posn p, std::string type);
+        normalHoard(Posn p);
 };
 
 class smallHoard: public Gold {
     public:
-        smallHoard(Posn p, std::string type);
+        smallHoard(Posn p);
 };
 
 class dragonHoard: public Gold {
     private:
         Enemy *dragon;
     public:
-        dragonHoard(Posn p, std::string type, Enemy *dragon);
+        dragonHoard(Posn p, Enemy *dragon);
         void setDragon(Enemy *dragon);
         Enemy *getDragon();
 };

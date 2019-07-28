@@ -7,7 +7,7 @@ barrierSuit::barrierSuit(Posn p, Enemy *dragon) {
     this->symbol = 'B';
 }
 
-bool barrierSuit::guarded() {
+bool barrierSuit::isGuarded() {
 	return this->guarded;
 }
 
@@ -19,6 +19,6 @@ void barrierSuit::setDragon(Enemy *dragon) {
 	this->dragon = dragon;
 }
         
-Dragon *barrierSuit::getDragon() {
+Enemy *barrierSuit::getDragon() {
 	return this->dragon;
 }
