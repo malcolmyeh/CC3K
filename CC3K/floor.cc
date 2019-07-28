@@ -11,7 +11,7 @@ Floor::Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
 }
 
 Floor::Floor() {
-	this->level = 0;
+	this->level = 1;
 	this->won = false;
 	this->stairVisible = false;
 	this->merchantHostile = false;
@@ -21,21 +21,22 @@ Floor::Floor() {
 }
 
 Floor::~Floor() {
-	for (enemy : *this->enemies) {
+	for (Enemy *enemy : this->enemies) {
 		delete enemy;
 	}
-	for (item : *this->items) { 
+	for (Item *item : this->items) { 
 		delete item; 
 	}
-	for (chamber : *this->chambers) {
+	for (Chamber *chamber : this->chambers) {
 		delete chamber;
 	}
 	delete this->player;
 	delete this->stair;
+	delete this->suit;
 }
 
 void Floor::generatePosition(int &id, Posn &pos) {
-	id = rand() % 5;
+	id = rand() % 5 + 1;
 	Chamber c = chambers.at(id - 1);
 	Posn p;
 	do {
@@ -88,87 +89,101 @@ void Floor::generateStair(int id) {
 
 void Floor::generateEnemies(int ds) {
 	for (int i = 0; i < ds; i++) {
-		int id;
-		int pos;
-		generatePosition(&pos, &id);
+		Posn pos = {0, 0};
 		Enemy *e = new Dragon(pos, NULL, NULL, id);
 		this->enemies.pushback(e);
 	}
 	for (int i = 0; i < 20 - ds; i++) {
-		int num = rand() % 18;
+		int num = rand() % 18 + 1;
 		int id;
-		int pos;
+		Posn pos;
 		generatePosition(&pos, &id);
+		Enemy *e;
 		if (num <= 4) {
-			Enemy *e = new Werewolf(pos, id);
+			e = new Werewolf(pos, id);
 			this->enemies.pushback(e);
 		} else if (num <= 7) {
-			Enemy *e = new Vampire(pos, id);
+			e = new Vampire(pos, id);
 			this->enemies.pushback(e);
 		} else if (num <= 12) {
-			Enemy *e = new Goblin(pos, id);
+			e = new Goblin(pos, id);
 			this->enemies.pushback(e);
 		} else if (num <= 14) {
-			Enemy *e = new Troll(pos, id);
+			e = new Troll(pos, id);
 			this->enemies.pushback(e);
 		} else if (num <= 16) {
-			Enemy *e = new Phoenix(pos, id);
+			e = new Phoenix(pos, id);
 			this->enemies.pushback(e);
 		} else if (num <= 18) {
-			Enemy *e = new Merchant(pos, id);
+			e = new Merchant(pos, id);
 			this->enemies.pushback(e);
 		}
+		displayGrid[e->getPosition().p.y - 1][e->getPosition().p.x - 1] = e->getSymbol();
 	}
 }
 
 void Floor::generateItems(int &ds) {
 	for (int i = 0; i < 10; i++) {
-		int num = rand() % 6;
+		int num = rand() % 6 + 1;
 		int id;
-		int pos;
+		Posn pos;
 		generatePosition(&pos, &id);
+		Item *i;
 		if (num == 1) {
-			Item *i = new Potion(pos, "RH");
+			i = new Potion(pos, "RH");
 			this->items.pushback(i);
 		} else if (num == 2) {
-			Item *i = new Potion(pos, "BA");
+			i = new Potion(pos, "BA");
 			this->items.pushback(i);
 		} else if (num == 3) {
-			Item *i = new Potion(pos, "BD");
+			i = new Potion(pos, "BD");
 			this->items.pushback(i);
 		} else if (num == 4) {
-			Item *i = new Potion(pos, "PH");
+			i = new Potion(pos, "PH");
 			this->items.pushback(i);
 		} else if (num == 5) {
-			Item *i = new Potion(pos, "WA");
+			i = new Potion(pos, "WA");
 			this->items.pushback(i);
 		} else if (num == 6) {
-			Item *i = new Potion(pos, "WD");
+			i = new Potion(pos, "WD");
 			this->items.pushback(i);
 		}
+		displayGrid[i->getPosition().p.y - 1][i->getPosition().p.x - 1] = i->getSymbol();
 	}
 	for (int i = 0; i < 6; i++) {
-		int num = rand() % 8;
+		int num = rand() % 8 + 1;
 		int id;
-		int pos;
+		Posn pos;
 		generatePosition(&pos, &id);
+		Item *i;
 		if (num <= 5) {
-			Item *i = new normalHoard(pos);
+			i = new normalHoard(pos, "normal");
 			this->items.pushback(i);
 		} else if (num <= 7) {
-			Item *i = new smallHoard(pos);
+			i = new smallHoard(pos, "small");
 			this->items.pushback(i);
 		} else if (num == 8) {
-			Item *i = new dragonHoard(pos, NULL);
+			i = new dragonHoard(pos, "dragon", NULL);
 			this->items.pushback(i);
+			int dpos;
+			int dId;
+			Enemy *e = new Dragon(dpos, i, NULL, dId);
+			i->setDragon(e);
+			this->enemies.pushback(e);
 			++ds;
 		}
+		displayGrid[i->getPosition().p.y - 1][i->getPosition().p.x - 1] = i->getSymbol();
 	}
-	int num = rand() % 
-}
-
-void Floor::setDragons() {
-	for()
+	int num = rand() % (6 - this->level);
+	if (num == 0 && !this->barrierSpawned) {
+		int id;
+		Posn pos;
+		generatePosition(&pos, &id);
+		this->suit = new barrierSuit(pos, NULL);
+		this->barrierSpawned = true;
+		displayGrid[this->suit->getPosition().p.y - 1][this->suit->getPosition().p.x - 1] = this->suit->getSymbol();
+		++ds;
+	}
 }
 
 bool Floor::validMove(Posn pos) {

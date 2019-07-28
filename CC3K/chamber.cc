@@ -64,8 +64,8 @@ bool Chamber::checkRange(Posn p) {
 Posn Chamber::getPosition() {
 	Posn p;
 	do {
-		r = rand() % maxRow;
-		c = rand() % maxCol;
+		r = rand() % maxRow + 1;
+		c = rand() % maxCol + 1;
 		p.x = c;
 		p.y = r;
 	} while (!checkRange(p));

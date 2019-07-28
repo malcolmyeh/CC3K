@@ -7,11 +7,13 @@
 class Dragon : public Character {
 	private:
 		bool isHostile;
-		DragonHoard * dragonHoard;
-		BarrierSuit * barrierSuit;
+		Item *hoard;
+		Item *suit;
 	public:
-		Dragon(Posn position, DragonHoard * dragonHoard, BarrierSuit * barrierSuit, int chamberID);
+		Dragon(Posn position, Item *hoard, Item *suit, int chamberID);
 		~Dragon();
+		Item *getHoard();
+		Item *getSuit();
 		/*void dealDamage(Character * opponent) override;
 		void takeDamage(amount Integer) override;*/
 };

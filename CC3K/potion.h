@@ -4,11 +4,7 @@
 #include "item.h"
 #include <string>
 
-<<<<<<< HEAD
-class Potion : public Item {
-=======
 class Potion: public Item {
->>>>>>> 334f0e573ad677f7129cefc45555b44493c33249
     private:
         std::string type;
     public:

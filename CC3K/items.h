@@ -9,6 +9,7 @@ class Items {
     public:
         Posn p;
         Items(Posn p);
+        char getSymbol();
 };
 
 #endif
