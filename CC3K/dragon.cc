@@ -30,12 +30,18 @@ void Dragon::setPos(Posn pos){
 }
 
 std::string Dragon::dealDamage(Character * opponent){
+
 	double amount;
 	std::string combatMsg;
 	std::string attacker = this->race;
 
 	int attack = this->Atk;
 	int defense = opponent->getDef();
+	if (this->stunned){
+		this->stunned = false;
+		combatMsg = attacker + " is stunned. ";
+		return combatMsg;
+	}
 
 	if (this->HP <= 50){
 		if (rand() % 2 == 0){

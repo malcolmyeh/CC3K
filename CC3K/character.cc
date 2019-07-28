@@ -44,3 +44,7 @@ void Character::move(Posn position){
 void Character::updateGold(int amount){
 	this->gold += amount;
 }
+
+void Character::getStunned(){
+	this->stunned = true;
+}

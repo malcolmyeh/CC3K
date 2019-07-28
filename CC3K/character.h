@@ -13,8 +13,9 @@ class Character {
 		int gold;
 		std::string race;
 		char symbol;
-		
+		bool stunned;
 	public:
+		void getStunned();
 		Posn position;
 		void updateGold(int amount);
 		virtual int getAtk();

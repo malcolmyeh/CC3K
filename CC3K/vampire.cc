@@ -24,6 +24,12 @@ std::string Vampire::dealDamage(Character * opponent){
 	int attack = this->Atk;
 	int defense = opponent->getDef();
 
+	if (this->stunned){
+		this->stunned = false;
+		combatMsg = attacker + " is stunned. ";
+		return combatMsg;
+	}
+
 	if (rand() % 2 == 0){
 		combatMsg = attacker + "'s attack missed. ";
 		return combatMsg;
