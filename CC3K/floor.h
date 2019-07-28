@@ -48,11 +48,12 @@ public:
 	//void initFloor();
 	void generatePlayer();
 	void generateStair();
-	//void generateEnemies();
+	void generateEnemies();
 	//void generateItems();
 	void generateChamber();
 	void setDragons();
 	void generatePosition(int &id, Posn &pos);
+	void resetFloor();
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
 	void setVisible(bool visible);
