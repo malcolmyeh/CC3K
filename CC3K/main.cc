@@ -20,6 +20,13 @@
 #include <ctime>
 
 
+#include "item.h"
+#include "barriersuit.h"
+#include "gold.h"
+#include "dragon.h"
+
+
+
 
 int main(void){
 	srand(time(NULL));
@@ -27,7 +34,7 @@ int main(void){
 	p.x = 1;
 	p.y = 1;
 
-	Player *p1 = new Human(1000, 0, p);
+	Player *p1 = new Human(1000, 10, p);
 	Player *p2 = new Orc(180, 0, p);
 	Player *p3 = new Elf(140, 0, p);
 	Player *p4 = new Dwarf(100, 0, p);
@@ -39,43 +46,10 @@ int main(void){
 	Enemy *e5 = new Vampire(p, 1);
 	Enemy *e6 = new Phoenix(p, 1);
 
-	/*std::cout << p1->getRace() << std::endl;
-	std::cout << p2->getRace() << std::endl;
-	std::cout << p3->getRace() << std::endl;
-	std::cout << p4->getRace() << std::endl;
-
-	std::cout << "Player Atk: " << std::to_string(p1->getAtk()) << std::endl;
-	std::cout << "Werewolf Def: " << std::to_string(e1->getDef()) << std::endl;
 
 
-	std::cout << p1->dealDamage(e1) << std::endl;
-	std::cout << p1->dealDamage(e1) << std::endl;
-	std::cout << p1->dealDamage(e1) << std::endl;
-	std::cout << p1->dealDamage(e1) << std::endl;
-	std::cout << p1->dealDamage(e1) << std::endl;
-	std::cout << p1->dealDamage(e1) << std::endl;
-
-
-	std::cout << "Player Def: " << std::to_string(p1->getDef()) << std::endl;
-	std::cout << "Phoenix Def: " << std::to_string(e1->getAtk()) << std::endl;
-
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-	std::cout << e6->dealDamage(p1) << std::endl;
-
-	std::cout << "Player Atk: " << std::to_string(p2->getAtk()) << std::endl;
-	std::cout << "Vampire Def: " << std::to_string(e5->getDef()) << std::endl;
-
-	std::cout << p2->dealDamage(e5) << std::endl;
-	std::cout << p2->dealDamage(e5) << std::endl;
-	std::cout << p2->dealDamage(e5) << std::endl;*/
+	Item *i1 = new dragonHoard(p, NULL);
+	Enemy *e7 = new Dragon(p, i1, NULL, 1);
 
 	//werewolf: damage increases as health decreases
 	std::cout << e1->dealDamage(p1) << std::endl;
@@ -141,4 +115,35 @@ int main(void){
 	std::cout << e6->dealDamage(p1) << std::endl;
 	std::cout << e6->dealDamage(p1) << std::endl;
 	std::cout << e6->dealDamage(p1) << std::endl;
+
+	//dragon: chance to breath fire, heal after lower than 50
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	e7->takeDamage(149);
+	std::cout << "dragon health: " + std::to_string(e7->getHP()) << std::endl << std::endl << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << e7->dealDamage(p1) << std::endl;
+	std::cout << "dragon health: " + std::to_string(e7->getHP()) << std::endl << std::endl << std::endl;
+
 }

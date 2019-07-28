@@ -1,5 +1,5 @@
-test: main.o posn.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o
-		g++ -std=c++14 -Werror=vla -g main.o posn.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o -o test
+test: main.o posn.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o
+		g++ -std=c++14 -Werror=vla -g main.o posn.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o -o test
 
 posn.o: posn.cc posn.h
 		g++ -std=c++14 -Werror=vla -c posn.cc
@@ -42,7 +42,19 @@ vampire.o: vampire.cc vampire.h enemy.h
 werewolf.o: werewolf.cc werewolf.h enemy.h
 		g++ -std=c++14 -Werror=vla -c werewolf.cc
 
-main.o: main.cc posn.h character.h player.h enemy.h human.h dwarf.h elf.h orc.h werewolf.h troll.h goblin.h merchant.h vampire.h phoenix.h
+item.o: item.cc item.h
+		g++ -std=c++14 -Werror=vla -c item.cc
+
+gold.o: gold.cc gold.h item.h
+		g++ -std=c++14 -Werror=vla -c gold.cc
+
+barriersuit.o: barriersuit.cc barriersuit.h item.h
+		g++ -std=c++14 -Werror=vla -c barriersuit.cc
+
+dragon.o: dragon.cc dragon.h enemy.h barriersuit.h gold.h
+		g++ -std=c++14 -Werror=vla -c dragon.cc
+
+main.o: main.cc posn.h character.h player.h enemy.h human.h dwarf.h elf.h orc.h werewolf.h troll.h goblin.h merchant.h vampire.h phoenix.h item.h gold.h barriersuit.h dragon.h
 		g++ -std=c++14 -Werror=vla -c main.cc
 
 .Phony: clean
