@@ -14,9 +14,7 @@ class Chamber {
 public:
 	Chamber(int num);
 	bool checkRange(Posn p);
-	Posn getPosition() {
-
-	}
+	Posn getPosition();
 };
 
 #endif

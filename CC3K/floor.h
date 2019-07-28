@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 #include "posn.h"
 #include "stair.h"
 #include "chamber.h"
@@ -23,7 +24,7 @@
 #include "werewolf.h"
 #include "potion.h"
 #include "gold.h"
-#include "barriersuit"
+#include "barriersuit.h"
 
 class Floor {
 
@@ -41,7 +42,7 @@ public:
 	char displayGrid[25][79];
 	Stair * stair;
 	Player * player;
-	Item *suit;
+	barrierSuit *suit;
 
 	Floor(int level, bool won, bool hostile, bool spawned, Player * player);
 	Floor();
@@ -50,10 +51,11 @@ public:
 	void initFloor(char type);
 	void generatePlayer(char type, int &id);
 	void generateStair(int id);
-	void generateEnemies(int &dragons);
-	void generateItems(int dragons);
+	void generateEnemies(int dragons);
+	void generateItems(int &dragons);
 	void generateChamber();
 	void generatePosition(int &id, Posn &pos);
+	Posn dragonPosition(Posn pos);
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
 	void setVisible(bool visible);

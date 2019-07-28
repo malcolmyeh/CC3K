@@ -1,6 +1,6 @@
 #include "dragon.h"
 
-Dragon::Dragon(Posn position, Item *hoard, Item *suit, int chamberID){
+Dragon::Dragon(Posn position, dragonHoard *hoard, barrierSuit *suit, int chamberID){
 	this->Atk = 20;
 	this->Def = 20;
 	this->HP = 150;
@@ -17,11 +17,11 @@ Dragon::Dragon(Posn position, Item *hoard, Item *suit, int chamberID){
 Dragon::~Dragon(){}
 
 
-Item *Dragon::getHoard() {
+dragonHoard *Dragon::getHoard() {
 	return this->hoard;
 }
 
-Item *Dragon::getSuit() {
+barrierSuit *Dragon::getSuit() {
 	return this->suit;
 }
 

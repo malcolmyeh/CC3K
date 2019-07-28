@@ -7,14 +7,14 @@
 class Dragon : public Enemy {
 	private:
 		bool isHostile;
-		Item *hoard;
-		Item *suit;
+		dragonHoard *hoard;
+		barrierSuit *suit;
 	public:
-		Dragon(Posn position, Item *hoard, Item *suit, int chamberID);
+		Dragon(Posn position, dragonHoard *hoard, barrierSuit *suit, int chamberID);
 		~Dragon();
 
-		Item *getHoard();
-		Item *getSuit();
+		dragonHoard *getHoard();
+		barrierSuit *getSuit();
 
 		void setPos(Posn pos);
 

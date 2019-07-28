@@ -42,7 +42,7 @@ bool Chamber::checkRange(Posn p) {
 	} else if (num == 3) {
 		if (x >= col && y >= row && x <= 61 && y <= 7) {
 			return true;
-		} else if (x = 62 && y >= 4 && y <= 13) {
+		} else if (x == 62 && y >= 4 && y <= 13) {
 			return true;
 		} else if (x >= 63 && y >= 6 && x <= 70 && y <= 13) {
 			return true;
@@ -64,8 +64,8 @@ bool Chamber::checkRange(Posn p) {
 Posn Chamber::getPosition() {
 	Posn p;
 	do {
-		r = rand() % maxRow + 1;
-		c = rand() % maxCol + 1;
+		int r = rand() % maxRow + 1;
+		int c = rand() % maxCol + 1;
 		p.x = c;
 		p.y = r;
 	} while (!checkRange(p));
