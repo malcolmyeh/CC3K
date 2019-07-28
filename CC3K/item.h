@@ -8,7 +8,6 @@ class Item {
         char symbol;
     public:
         Posn p;
-        Item(Posn p);
 };
 
 #endif

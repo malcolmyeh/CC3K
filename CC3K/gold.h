@@ -3,21 +3,17 @@
 
 #include "item.h"
 
-<<<<<<< HEAD
-class Gold: public Items {
-=======
 class Gold : public Item {
->>>>>>> 2a1a16f7031737762740e6e37f2a9650d5691ddb
     private:
         int value;
         std::string type;
-        bool protected;
+        bool guarded;
     public:
         int getValue();
         std::string getType();
-        bool isProtected();
-        void setType(string type);
-        void setProtection(bool x);
+        bool isGuarded();
+        void setType(std::string type);
+        void setGuarded(bool x);
         void setValue(int x);
 };
 

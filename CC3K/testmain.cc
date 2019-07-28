@@ -1,5 +1,4 @@
-#include <stdio>
-#include "items.h"
+#include "item.h"
 
 int main() {
     
