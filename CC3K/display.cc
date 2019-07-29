@@ -11,14 +11,23 @@ void Display::readFloor(std::string file) {
 	}
 }
 
-void Display::printFloor(){
+void Display::printFloor(Floor *floor, std::string log){
 	system("CLS");
 	for (int i = 0; i < 25; i++) {
 		for (int j = 0; j < 79; j++) {
 			std::cout << displayGrid[i][j];
 		}
 		std::cout << std::endl;
-	} 
+	}
+	std::cout << "Race: " << floor->player->getRace() << 
+	"                                                          Floor "
+	<< floor->getLevel() << std::endl;
+	std::cout << "Gold: " << floor->player->getGold() << std::endl;
+	std::cout << "HP: " << floor->player->getHP() << std::endl;
+	std::cout << "Atk: " << floor->player->getAtk() << std::endl;
+	std::cout << "Def: " << floor->player->getDef() << std::endl;
+	std::cout << "Action: " << log << std::endl;
+	
 }
 
 void Display::updateDisplay(Floor *floor) {

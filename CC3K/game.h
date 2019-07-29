@@ -15,14 +15,9 @@ private:
 	Display *display;
 
 public:
-<<<<<<< HEAD
 	Controller() {}
-	std:string runGame(char type);
-=======
 	std::string runGame(char type);
->>>>>>> 2e7f90a0e11fbee74afd234e9aaf8e8e2650d38b
 	void gameInit();
-	void 
 
 };
 

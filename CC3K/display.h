@@ -13,7 +13,7 @@ private:
 
 public:
 	void readFloor(std::string file);
-	void printFloor();
+	void printFloor(Floor *floor, std::string log);
 	void updateDisplay(Floor *floor);
 	char getChar(int i, int j);
 };

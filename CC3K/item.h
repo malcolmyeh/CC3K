@@ -10,6 +10,7 @@ class Item {
     public:
     	char getSymbol();
     	Posn getPosition();
+        bool withinRange(Posn player);
 };
 
 #endif
