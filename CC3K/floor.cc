@@ -224,9 +224,7 @@ void Floor::generateItems(int &dragons) {
 }
 
 void Floor::assignCompass() {
-	std::cout << this->enemies.size() << std::endl;
 	int num = rand() % this->enemies.size();
-	std::cout << num << std::endl;
 	this->enemies.at(num)->setCompass(true);
 }
 
@@ -236,7 +234,6 @@ std::string Floor::actEnemy() {
 	for (int i = 0; i < enemies.size(); ++i) {
 		Enemy *e = enemies.at(i);
 		if (e->withinRange(this->player->position)) {
-			std::cout << this->player->position.x << this->player->position.y << std::endl;
 			combatLog += e->dealDamage(this->player);
 		} else {
 			Posn p;
