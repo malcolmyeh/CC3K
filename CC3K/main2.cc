@@ -28,7 +28,7 @@
 
 
 
-int main(void){
+int main(void) {
 	srand(time(NULL));
 	Posn p;
 	p.x = 1;

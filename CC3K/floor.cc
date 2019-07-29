@@ -214,6 +214,13 @@ void Floor::generateItems(int &dragons) {
 	std::cout << "generate items clear" << std::endl;
 }
 
+void Floor::setCompass() {
+	int num = rand() % this->enemies.size();
+	this->enemies.at(num)->setCompass(true);
+}
+
+//std::string moveEnemy();
+
 bool Floor::validMove(Posn pos) {
 	char t = this->displayGrid[pos.y][pos.x];
 	return t == '.' || t == '+' || t == '#';

@@ -28,7 +28,7 @@
 
 
 class Floor {
-
+private:
 	int level;
 	bool won;
 	bool stairVisible;
@@ -57,6 +57,8 @@ public:
 	void generateChamber();
 	void generatePosition(int &id, Posn &pos);
 	Posn dragonPosition(Posn pos);
+	void setCompass();
+	//std::string moveEnemy();
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
 	void setVisible(bool visible);

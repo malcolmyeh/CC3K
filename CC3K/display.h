@@ -2,6 +2,10 @@
 #define DISPLAY_H
 
 #include <fstream>
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include "floor.h"
 
 class Display {
 private:
@@ -10,6 +14,7 @@ private:
 public:
 	void readFloor(std::string file);
 	void printFloor();
-}
+	void updateDisplay(Floor *floor);
+};
 
 #endif

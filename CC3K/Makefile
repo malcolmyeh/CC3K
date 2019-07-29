@@ -1,5 +1,5 @@
-cc3k: main.o posn.o stair.o chamber.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o
-		g++ -std=c++14 -Werror=vla -g main.o posn.o stair.o chamber.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o -o cc3k
+cc3k: main.o posn.o stair.o chamber.o display.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o
+		g++ -std=c++14 -Werror=vla -g main.o posn.o stair.o chamber.o display.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o -o cc3k
 
 posn.o: posn.cc posn.h
 		g++ -std=c++14 -Werror=vla -c posn.cc
@@ -67,7 +67,10 @@ barriersuit.o: barriersuit.cc barriersuit.h item.h
 floor.o: floor.cc floor.h posn.h character.h player.h enemy.h human.h dwarf.h elf.h orc.h werewolf.h troll.h goblin.h merchant.h vampire.h phoenix.h item.h gold.h potion.h barriersuit.h dragon.h chamber.h stair.h
 		g++ -std=c++14 -Werror=vla -c floor.cc
 
-game.o: game.cc game.h
+display.o: display.h display.cc floor.h
+		g++ -std=c++14 -Werror=vla -c display.cc
+
+game.o: game.cc game.h display.h floor.h
 		g++ -std=c++14 -Werror=vla -c game.cc
 
 main.o: main.cc floor.h game.h

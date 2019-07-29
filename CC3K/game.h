@@ -1,23 +1,23 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <iostream>
 #include "posn.h"
 #include "floor.h"
 #include "character.h"
 #include "player.h"
 #include "human.h"
-#include <string>
-#include <cstdlib>
+#include "display.h"
 
+class Controller {
+private:
+	Floor floor;	
+	Display display;
 
-// Output the floor on the screen
-void printFloor(Floor *floor);
+public:
+	//Check if valid direction
+	bool validDirection(std::string s);
 
-//Check if valid direction
-bool validDirection(std::string s);
-
-//
+};
 
 
 

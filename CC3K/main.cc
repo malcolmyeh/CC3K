@@ -1,9 +1,17 @@
 //Project by Malcolm Yeh, Zayaan Moez, Kai Lu for CS246
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "floor.h"
 #include "game.h"
 
+bool validDir(std::string s) {
+	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "se", "sw"};
+	for (int i = 0; i < 8; i++) {
+		if (s == dir[i]) { return true; }
+	}
+	return false;
+}
 
 int main(void)
 {
@@ -24,11 +32,17 @@ int main(void)
     std::string s;
     floor.initFloor('h');
 
-    printFloor(f);
+    system("CLS");
+	for (int i = 0; i < 25; i++) {
+		for (int j = 0; j < 79; j++) {
+			std::cout << floor.displayGrid[i][j];
+		}
+		std::cout << std::endl;
+	}
     while (std::cin >> s)
     {
         std::string ss = s;
-        if (validDirection(ss))
+        if (validDir(ss))
         {
             Posn pos = floor.player->position.getNew(ss);
             if (floor.validMove(pos))
@@ -37,7 +51,13 @@ int main(void)
                     floor.defaultGrid[floor.player->position.y][floor.player->position.x];
                 floor.player->position = pos;
                 floor.displayGrid[pos.y][pos.x] = '@';
-                printFloor(f);
+                system("CLS");
+			for (int i = 0; i < 25; i++) {
+				for (int j = 0; j < 79; j++) {
+					std::cout << floor.displayGrid[i][j];
+				}
+				std::cout << std::endl;
+			}
             }
             else
             {
