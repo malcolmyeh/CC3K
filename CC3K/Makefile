@@ -73,7 +73,7 @@ atkbuff.o: atkbuff.cc atkbuff.h buff.h
 defbuff.o: defbuff.cc defbuff.h buff.h
 		g++ -std=c++14 -Werror=vla -c defbuff.cc
 
-floor.o: floor.cc floor.h posn.h character.h player.h enemy.h human.h dwarf.h elf.h orc.h werewolf.h troll.h goblin.h merchant.h vampire.h phoenix.h item.h gold.h potion.h barriersuit.h dragon.h chamber.h stair.h
+floor.o: floor.cc floor.h posn.h character.h player.h enemy.h human.h dwarf.h elf.h orc.h werewolf.h troll.h goblin.h merchant.h vampire.h phoenix.h item.h gold.h potion.h barriersuit.h dragon.h chamber.h stair.h buff.h atkbuff.h defbuff.h
 		g++ -std=c++14 -Werror=vla -c floor.cc
 
 display.o: display.h display.cc floor.h
@@ -82,7 +82,7 @@ display.o: display.h display.cc floor.h
 game.o: game.cc game.h display.h floor.h
 		g++ -std=c++14 -Werror=vla -c game.cc
 
-main.o: main.cc floor.h game.h buff.h atkbuff.h defbuff.h
+main.o: main.cc floor.h game.h
 		g++ -std=c++14 -Werror=vla -c main.cc
 
 .Phony: clean
