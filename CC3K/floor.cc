@@ -4,7 +4,6 @@
 Floor::Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
 	this->level = level;
 	this->won = won;
-	this->stairVisible = false;
 	this->merchantHostile = hostile;
 	this->barrierSpawned = spawned;
 	this->player = player;
@@ -15,12 +14,14 @@ Floor::Floor(int level, bool won, bool hostile, bool spawned, Player * player) {
 Floor::Floor() {
 	this->level = 1;
 	this->won = false;
-	this->stairVisible = false;
 	this->merchantHostile = false;
 	this->barrierSpawned = false;
 	this->player = NULL;
 	this->stair = NULL;
 	this->suit = NULL;
+	for (int i = 0; i < 6; ++i){
+		this->knownPotion[i] = false;
+	}
 }
 
 Floor::~Floor() {
@@ -215,7 +216,7 @@ void Floor::setCompass() {
 	this->enemies.at(num)->setCompass(true);
 }
 
-std::string Floor::moveEnemy() {
+std::string Floor::actEnemy() {
 	std::string combatLog;
 	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "sw", "se"};
 	for (int i = 0; i < enemies.size(); ++i) {
@@ -236,21 +237,52 @@ std::string Floor::moveEnemy() {
 	return combatLog; 
 }
 
-std::string Floor::movePlayer() {
-	
+std::string Floor::movePlayer(std::string direction) {
+	Posn p = this->player->position.getNew(direction);
+	if (validMove(p)){
+		if (p == this->stair->getPosition()){
+			return "newfloor"
+		}
+		displayGrid[this->player->position.y][this->player->position.x] = '.';
+		displayGrid[p.y][p.x] = this->player->getSymbol();
+		this->player->move(p);
+		return "valid";
+	}
+	return "invalid";
+}
+
+/*std::string Floor::seePotion(){
+	for (int i = 0; i < item)
+}*/
+
+std::string Floor::atkPlayer(std::string direction){
+	Posn p = this->player->position.getNew(direction);
+	std::string combatLog;
+	for (int i = 0; i < this->enemies.size(); ++i){
+		if (p == this->enemies.at(i)->position){
+			combatLog += this->player->dealDamage(this->enemies.at(i));
+			if (this->enemies.at(i)->getHP() == 0){
+				Enemy * temp = this->enemies.at(i);
+				this->enemies.erase(this->enemies.begin()+i);
+				displayGrid[temp->position.y][temp->position.x] = '.';
+				if (temp->compass()){
+					displayGrid[this->stair->getPosition().y][this->stair->getPosition().x] = '/';
+				}
+				delete temp;
+			}
+			return combatLog;
+		}
+	}
+	return "Invalid attack. ";
 }
 
 bool Floor::validMove(Posn pos) {
 	char t = this->displayGrid[pos.y][pos.x];
-	return t == '.' || t == '+' || t == '#';
+	return t == '.' || t == '+' || t == '#' || t == '/';
 }
 
 bool Floor::validTile(Posn pos) {
-	return this->displayGrid[pos.y][pos.x] == '.';
-}
-
-void Floor::setVisible(bool visible) {
-	this->stairVisible = visible;
+	return this->displayGrid[pos.y][pos.x] == '.' && pos != this->stair->getPosition();
 }
 
 void Floor::setLevel(int level) {
@@ -267,10 +299,6 @@ void Floor::setHostile(bool hostile) {
 
 void Floor::setSpawned(bool spawned) {
 	this->barrierSpawned = spawned;
-}
-
-bool Floor::getVisible() {
-	return this->stairVisible;
 }
 
 int Floor::getLevel() {

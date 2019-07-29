@@ -9,6 +9,7 @@ public:
 	int y;
 	Posn getNew(std::string dir);
 	bool operator==(const Posn& p);
+	bool operator!=(const Posn& p);
 	Posn() {}
 	Posn(int x, int y): x{x}, y{y} {}
 };

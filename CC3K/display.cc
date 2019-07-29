@@ -28,3 +28,7 @@ void Display::updateDisplay(Floor *floor) {
 		}
 	}
 }
+
+char Display::getChar(int i, int j) {
+	return this->displayGrid[i][j];
+}

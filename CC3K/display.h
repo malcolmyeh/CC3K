@@ -15,6 +15,7 @@ public:
 	void readFloor(std::string file);
 	void printFloor();
 	void updateDisplay(Floor *floor);
+	char getChar(int i, int j);
 };
 
 #endif

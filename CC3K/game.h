@@ -14,6 +14,7 @@ private:
 	Display display;
 
 public:
+	std::string runGame(char type);
 	void gameInit();
 
 
