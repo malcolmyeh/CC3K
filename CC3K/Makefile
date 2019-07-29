@@ -1,5 +1,5 @@
-cc3k: main.o posn.o stair.o chamber.o display.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o
-		g++ -std=c++14 -Werror=vla -g main.o posn.o stair.o chamber.o display.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o -o cc3k
+cc3k: main.o posn.o stair.o chamber.o display.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o buff.o atkbuff.o defbuff.o
+		g++ -std=c++14 -Werror=vla -g main.o posn.o stair.o chamber.o display.o floor.o character.o player.o enemy.o human.o orc.o elf.o dwarf.o goblin.o merchant.o phoenix.o troll.o vampire.o werewolf.o item.o gold.o barriersuit.o dragon.o potion.o game.o buff.o atkbuff.o defbuff.o -o cc3k
 
 posn.o: posn.cc posn.h
 		g++ -std=c++14 -Werror=vla -c posn.cc
@@ -64,6 +64,15 @@ potion.o: potion.cc potion.h item.h
 barriersuit.o: barriersuit.cc barriersuit.h item.h
 		g++ -std=c++14 -Werror=vla -c barriersuit.cc
 
+buff.o: buff.cc buff.h
+		g++ -std=c++14 -Werror=vla -c buff.cc
+
+atkbuff.o: atkbuff.cc atkbuff.h buff.h
+		g++ -std=c++14 -Werror=vla -c atkbuff.cc
+
+defbuff.o: defbuff.cc defbuff.h buff.h
+		g++ -std=c++14 -Werror=vla -c defbuff.cc
+
 floor.o: floor.cc floor.h posn.h character.h player.h enemy.h human.h dwarf.h elf.h orc.h werewolf.h troll.h goblin.h merchant.h vampire.h phoenix.h item.h gold.h potion.h barriersuit.h dragon.h chamber.h stair.h
 		g++ -std=c++14 -Werror=vla -c floor.cc
 
@@ -73,7 +82,7 @@ display.o: display.h display.cc floor.h
 game.o: game.cc game.h display.h floor.h
 		g++ -std=c++14 -Werror=vla -c game.cc
 
-main.o: main.cc floor.h game.h
+main.o: main.cc floor.h game.h buff.h atkbuff.h defbuff.h
 		g++ -std=c++14 -Werror=vla -c main.cc
 
 .Phony: clean

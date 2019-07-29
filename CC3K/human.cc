@@ -11,6 +11,8 @@ Human::Human(int HP, int gold, Posn position)
     this->race = "Human";
     this->symbol = '@';
     this->position = position;
+    this->MaxHP = 140;
+    this->hasBarrier = false;
 }
 
 Human::~Human() {}

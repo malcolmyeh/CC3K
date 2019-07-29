@@ -9,6 +9,8 @@ Orc::Orc(int HP, int gold, Posn position)
     this->race = "Orc";
     this->symbol = '@';
     this->position = position;
+    this->MaxHP = 180;
+    this->hasBarrier = false;
 }
 
 Orc::~Orc() {}
@@ -30,11 +32,7 @@ std::string Orc::dealDamage(Character *opponent)
         //BESERK
         amount *= 1.5;
         lifesteal = amount * 0.25;
-        this->HP += ((int)lifesteal);
-        if (this->HP > 180)
-        {
-            this->HP = 180;
-        }
+        this->heal((int)lifesteal);
         opponent->takeDamage((int)amount);
         combatMsg = "BESERK! You deal " + std::to_string((int)amount) + " damage to " + defender + " (HP: " + std::to_string(opponent->getHP()) + "). You lifesteal for " + std::to_string((int)lifesteal) + " HP (HP: " + std::to_string(this->HP) + "). ";
 
@@ -43,11 +41,7 @@ std::string Orc::dealDamage(Character *opponent)
     {
         //lifesteal
         lifesteal = amount * 0.25;
-        this->HP += ((int)lifesteal);
-        if (this->HP > 180)
-        {
-            this->HP = 180;
-        }
+        this->heal((int)lifesteal);
         opponent->takeDamage((int)amount);
         combatMsg = "You deal " + std::to_string((int)amount) + " damage to " + defender + " (HP: " + std::to_string(opponent->getHP()) + "). You lifesteal for " + std::to_string((int)lifesteal) + " HP (HP: " + std::to_string(this->HP) + "). ";
     }
@@ -67,7 +61,7 @@ std::string Orc::dealDamage(Character *opponent)
     if (opponent->getHP() == 0)
     {
         combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold.";
-        this->gold += opponent->getGold();
+        this->updateGold(opponent->getGold());
     }
     return combatMsg;
 }

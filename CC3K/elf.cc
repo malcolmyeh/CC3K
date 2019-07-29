@@ -11,6 +11,9 @@ Elf::Elf(int HP, int gold, Posn position)
     this->race = "Elf";
     this->symbol = '@';
     this->position = position;
+    this->MaxHP = 140;
+    this->hasBarrier = false;
+
 }
 
 Elf::~Elf() {}
@@ -27,8 +30,8 @@ std::string Elf::dealDamage(Character *opponent)
     {
         if (rand() % 2 == 0)
         {
-            this->HP = 35;
-            combatMsg += "Elven magic restored health (HP: " + std::to_string(this->HP) + "). ";
+            this->heal(15); 
+            combatMsg += "Elven magic restored 15 health (HP: " + std::to_string(this->HP) + "). ";
         }
     }
     amount = ceil((100.0 / (100.0 + defense)) * attack);
@@ -47,7 +50,7 @@ std::string Elf::dealDamage(Character *opponent)
     if (opponent->getHP() == 0)
     {
         combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold.";
-        this->gold += opponent->getGold();
+        this->updateGold(opponent->getGold());
     }
 
     return combatMsg;

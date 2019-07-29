@@ -1,8 +1,8 @@
 #include "player.h"
 
 Player *Player::getPlayer()
-{
-    return this;
+{   return this;
+ 
 }
 
 bool Player::barrier()
@@ -10,10 +10,6 @@ bool Player::barrier()
     return this->hasBarrier;
 }
 
-int Player::chamber()
-{
-    return this->curChamber;
-}
 
 int Player::getMaxHP()
 {
@@ -38,7 +34,7 @@ std::string Player::dealDamage(Character *opponent)
     if (opponent->getHP() == 0)
     {
         combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold.";
-        this->gold += opponent->getGold();
+        this->updateGold(opponent->getGold());
     }
 
     return combatMsg;
@@ -58,4 +54,22 @@ void Player::takeDamage(int amount)
     {
         this->HP = 0;
     }
+}
+
+void Player::heal(int amount)
+{
+    this->HP += amount;
+    if (this->HP > this->MaxHP){
+        this->HP = this->MaxHP;
+    }
+}
+
+void Player::increaseAtk(int amount)
+{
+    this->Atk += amount;
+}
+
+void Player::increaseDef(int amount)
+{
+    this->Def += amount;
 }

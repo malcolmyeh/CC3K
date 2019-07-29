@@ -11,6 +11,8 @@ Dwarf::Dwarf(int HP, int gold, Posn position)
     this->race = "Dwarf";
     this->symbol = '@';
     this->position = position;
+    this->MaxHP = 100;
+    this->hasBarrier = false;
 }
 
 Dwarf::~Dwarf() {}
@@ -28,25 +30,25 @@ std::string Dwarf::dealDamage(Character *opponent)
     if (chance == 0 || chance == 1)
     {
         //longsword
-        this->Atk += 1;
+        this->increaseAtk(1);
         combatMsg += "You forged a Longsword. Atk increased by 1 (Atk: " + std::to_string(this->Atk) + "). ";
     }
     else if (chance == 2)
     {
         //broadsword
-        this->Atk += 2;
+        this->increaseAtk(2);
         combatMsg += "You forged a Broadsword. Atk increased by 2 (Atk: " + std::to_string(this->Atk) + "). ";
     }
     else if (chance == 3 || chance == 4)
     {
         //light shield
-        this->Def += 1;
+        this->increaseDef(1);
         combatMsg += "You forged a Light Shield. Def increased by 1 (Def: " + std::to_string(this->Def) + "). ";
     }
     else if (chance == 5)
     {
         //heavy shield
-        this->Def += 2;
+        this->increaseDef(2);
         combatMsg += "You forged a Heavy Shield. Def increased by 2 (Def: " + std::to_string(this->Def) + "). ";
     }
 
@@ -59,7 +61,7 @@ std::string Dwarf::dealDamage(Character *opponent)
     if (opponent->getHP() == 0)
     {
         combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold.";
-        this->gold += opponent->getGold();
+        this->updateGold(opponent->getGold());
     }
 
 

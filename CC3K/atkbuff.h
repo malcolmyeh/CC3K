@@ -5,10 +5,10 @@
 
 class AtkBuff: public Buff {
     public:
-        AtkBuff();
-        int getAtk();
+        AtkBuff(Player *player, int value);
+        int getAtk() override;
         ~AtkBuff();
-        std::string dealDamage(Character *opponent) override;
+        
 };
 
 #endif

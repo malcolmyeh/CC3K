@@ -5,8 +5,8 @@
 
 class DefBuff: public Buff {
     public:
-        DefBuff();
-        int getDef();
+        DefBuff(Player *player, int value);
+        int getDef() override;
         ~DefBuff();
 };
 
