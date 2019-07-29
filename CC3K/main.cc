@@ -44,6 +44,7 @@ int main(void) {
 	while (true) {
 
 		std::string str;
+
 		do {
 		std::cout << "Welcome to CC3K+" << std::endl << std::endl;
 		std::cout << "Please choose a race to begin:" << std::endl;
@@ -75,9 +76,19 @@ int main(void) {
 		}
 
 		do {
-			
-			std::cout << "Please enter R to restart "
-		}
+			std::cout << std::endl << std::endl;
+			std::cout << "Please enter r to restart or q to Quit."
+			std::cin >> str;
+		} while(str != "r" || str != "q");
 
+		if (str == "r") {
+			system("CLS");
+			std::cout << "Restarting Game" << std::endl << std::endl << std::endl;
+			continue;
+		} (str == "q") {
+			printEnd();
+			break;
+		}
 	}
+	
 } 
