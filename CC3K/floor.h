@@ -26,6 +26,7 @@
 #include "gold.h"
 #include "barriersuit.h"
 
+
 class Floor {
 
 	int level;
@@ -37,12 +38,12 @@ class Floor {
 public:
 	char defaultGrid[25][79];
 	std::vector<Enemy *> enemies;
-	std::vector<Item *> items;
-	std::vector<Chamber *> chambers;
+	std::vector<Item *> items; 
+	std::vector<Chamber *> chambers; 
 	char displayGrid[25][79];
-	Stair * stair;
-	Player * player;
-	barrierSuit *suit;
+	Stair * stair; 
+	Player * player; 
+	barrierSuit *suit; 
 
 	Floor(int level, bool won, bool hostile, bool spawned, Player * player);
 	Floor();

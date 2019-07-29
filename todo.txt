@@ -1,0 +1,9 @@
+- new constructors for players
+- dealdamage for buffs
+- enemy movement
+- compass
+- hostility 
+- seeing potion, revealing potion, using potions **************
+- test harness
+- MVC
+
