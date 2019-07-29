@@ -7,15 +7,18 @@
 #include "player.h"
 #include "human.h"
 #include "display.h"
+#include <iostream>
 
 class Controller {
 private:
-	Floor floor;	
-	Display display;
+	Floor *floor;	
+	Display *display;
 
 public:
+	Controller() {}
+	std:string runGame(char type);
 	void gameInit();
-
+	void 
 
 };
 
