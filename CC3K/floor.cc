@@ -73,9 +73,6 @@ void Floor::initFloor(char type) {
 
 	generateEnemies(dragons);
 
-
-	std::cout << "init floor clear" << std::endl;
-
 }
 
 void Floor::generateChamber() {
@@ -211,7 +208,6 @@ void Floor::generateItems(int &dragons) {
 		++dragons;
 		displayGrid[dpos.y][dpos.x] = e->getSymbol();
 	}
-	std::cout << "generate items clear" << std::endl;
 }
 
 void Floor::setCompass() {
@@ -219,7 +215,30 @@ void Floor::setCompass() {
 	this->enemies.at(num)->setCompass(true);
 }
 
-//std::string moveEnemy();
+std::string Floor::moveEnemy() {
+	std::string combatLog;
+	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "sw", "se"};
+	for (int i = 0; i < enemies.size(); ++i) {
+		Enemy *e = enemies.at(i);
+		if (e->withinRange(this->player->position)) {
+			combatLog += e->dealDamage(this->player);
+		} else {
+			Posn p;
+			do {
+				int num = rand() % 8;
+				p = e->position.getNew(dir[i]);
+			} while(!validTile(p));
+			displayGrid[e->position.y][e->position.x] = '.';
+			displayGrid[p.y][p.x] = e->getSymbol();
+			e->position = p;
+		}
+	}
+	return combatLog; 
+}
+
+std::string Floor::movePlayer() {
+	
+}
 
 bool Floor::validMove(Posn pos) {
 	char t = this->displayGrid[pos.y][pos.x];

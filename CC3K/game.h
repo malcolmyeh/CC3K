@@ -14,11 +14,12 @@ private:
 	Display display;
 
 public:
-	//Check if valid direction
-	bool validDirection(std::string s);
+	void gameInit();
+
 
 };
 
+bool validDirection(std::string s);
 
 
 #endif

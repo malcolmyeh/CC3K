@@ -58,7 +58,8 @@ public:
 	void generatePosition(int &id, Posn &pos);
 	Posn dragonPosition(Posn pos);
 	void setCompass();
-	//std::string moveEnemy();
+	std::string moveEnemy();
+	std::string movePlayer();
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
 	void setVisible(bool visible);
