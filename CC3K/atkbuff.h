@@ -8,6 +8,7 @@ class AtkBuff: public Buff {
         AtkBuff();
         int getAtk();
         ~AtkBuff();
+        std::string dealDamage(Character *opponent) override;
 };
 
 #endif

@@ -11,12 +11,24 @@
 |																						|
 |			Controls:																	|
 |																						|
+<<<<<<< HEAD
 |			Directions: ea, we, no, so, nw, ne, sw, se									|
 |			Move: <direction>															|
 |			Attack: a <direction>														|
 |			Use potion: u <direction>													|
 |			Restart: r																	|
 |			Quit: q		 																|
+=======
+|																						|
+|																						|
+|																						|
+|										MENU											|
+|																						|
+|																						|
+|																						|
+|																						|
+|																						|
+>>>>>>> 67f9c90c3dc13577e7cd2d157de271ae686d5843
 |																						|
 |																						|
 |																						|
