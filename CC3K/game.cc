@@ -1,7 +1,10 @@
 #include "game.h"
 
 std::string Controller::runGame(char type) {
-	gameInit();
+
+	gameInit(type);
+
+	display->printFloor(floor,"game start");
 	while (true) {
 		std::string moveStatus;
 		std::string log;
@@ -10,13 +13,13 @@ std::string Controller::runGame(char type) {
 		if (validDirection(str)) {
 			moveStatus = floor->movePlayer(str);
 			if (moveStatus == "valid") {
-				log += "You move " + str + ".";
+				log += "You move " + str + ". ";
 			} else if (moveStatus == "invalid") {
 				log += "Move is invalid.";
 				display->printFloor(floor, log);
 				continue;
 			} else if (moveStatus == "newfloor") {
-				//new floor
+				return "quit";
 			}
 		} else if (str == "a") {
 			std::cin >> str;
@@ -50,11 +53,14 @@ std::string Controller::runGame(char type) {
 			display->printFloor(floor, log);
 			continue;
 		}
-		floor->actEnemy();
-	}
+		log += floor->actEnemy();
+		display->updateDisplay(floor);
+		display->printFloor(floor, log);	}
+	delete floor;
+	delete display;
 }
 
-void Controller::gameInit() {
+void Controller::gameInit(char type) {
 	this->floor = new Floor();
 	this->display = new Display();
 	this->display->readFloor("map.txt");
@@ -65,4 +71,20 @@ void Controller::gameInit() {
 			floor->defaultGrid[i][j] = c;
 		}
 	}
+	
+	this->floor->initFloor(type);
+	this->display->updateDisplay(floor);
+	
+	
+}
+
+bool validDirection(std::string s){
+	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "se", "sw"};
+	for (int i = 0; i < 8; ++i){
+		if (s == dir[i]){
+			return true;
+		}
+	}
+	return false;
+}
 	

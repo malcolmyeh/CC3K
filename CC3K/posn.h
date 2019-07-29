@@ -12,6 +12,9 @@ public:
 	bool operator!=(const Posn& p);
 	Posn() {}
 	Posn(int x, int y): x{x}, y{y} {}
+	Posn &operator=(const Posn& p);
 };
+
+
 
 #endif

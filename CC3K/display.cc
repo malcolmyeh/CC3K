@@ -33,7 +33,7 @@ void Display::printFloor(Floor *floor, std::string log){
 void Display::updateDisplay(Floor *floor) {
 	for (int i = 0; i < 25; i++) {
 		for (int j = 0; j < 79; j++) {
-			this->displayGrid[i][j] = floor->defaultGrid[i][j]; 
+			this->displayGrid[i][j] = floor->displayGrid[i][j]; 
 		}
 	}
 }

@@ -46,19 +46,22 @@ int main(void) {
 		std::string str;
 
 		do {
-		std::cout << "Welcome to CC3K+" << std::endl << std::endl;
-		std::cout << "Please choose a race to begin:" << std::endl;
-		std::cout << "Human(140 HP, 20 Atk, 20 Def):  h" << std::endl;
-		std::cout << "Elf(140 HP, 30 Atk, 10 Def):    e" << std::endl;
-		std::cout << "Dwarf(100 HP, 20 Atk, 30 Def):  d" << std::endl;
-		std::cout << "Orc(180 HP, 30 Atk, 25 Def):    o" << std::endl;
-		std::cin >> str;
-		} while(str != "h" || str != "e" || str != "d" || str != "o");
+			std::cout << std::endl;
+			std::cout << "Welcome to CC3K+" << std::endl << std::endl;
+			std::cout << "Please choose a race to begin:" << std::endl;
+			std::cout << "Human(140 HP, 20 Atk, 20 Def):  h" << std::endl;
+			std::cout << "Elf(140 HP, 30 Atk, 10 Def):    e" << std::endl;
+			std::cout << "Dwarf(100 HP, 20 Atk, 30 Def):  d" << std::endl;
+			std::cout << "Orc(180 HP, 30 Atk, 25 Def):    o" << std::endl;
+			std::cin >> str;
+		} while(str != "h" && str != "e" && str != "d" && str != "o");
 		
+
 		char type = str[0];
 
 		Controller c;
 		status = c.runGame(type);
+		
 
 		if (status == "restart") {
 			system("CLS");

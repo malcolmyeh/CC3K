@@ -57,7 +57,7 @@ public:
 	void generateChamber();
 	void generatePosition(int &id, Posn &pos);
 	Posn dragonPosition(Posn pos);
-	void setCompass();
+	void assignCompass();
 	std::string actEnemy();
 	std::string movePlayer(std::string direction);
 	std::string atkPlayer(std::string direction);

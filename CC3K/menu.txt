@@ -1,27 +1,27 @@
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-|																						|
-|																						|
-|																						|
-|																						|
-|																						|
-|																						|
-|																						|
-|								CHAMBER CRAWLER 3000									|
-|								      Main Menu											|
-|																						|
-|			Controls:																	|
-|																						|
-|			Directions: ea, we, no, so, nw, ne, sw, se									|
-|			Move: <direction>															|
-|			Attack: a <direction>														|
-|			Use potion: u <direction>													|
-|			Restart: r																	|
-|			Quit: q		 																|
-|																						|
-|																						|
-|																						|
-|																						|
-|																						|
-|																						|
-|																						|
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                CHAMBER CRAWLER 3000                                   |
+|                                     Main Menu                                         |
+|                                                                                       |
+|           Controls:                                                                   |
+|                                                                                       |
+|           Directions: ea, we, no, so, nw, ne, sw, se                                  |
+|           Move: <direction>                                                           |
+|           Attack: a <direction>                                                       |
+|           Use potion: u <direction>                                                   |
+|           Restart: r                                                                  |
+|           Quit: q                                                                     |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
+|                                                                                       |
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

@@ -4,7 +4,7 @@ Troll::Troll(Posn position, int chamberID)
 {
     this->Atk = 25;
     this->Def = 15;
-    this->HP = 12000;
+    this->HP = 120;
     this->gold = 1;
     this->race = "Troll";
     this->symbol = 'T';
