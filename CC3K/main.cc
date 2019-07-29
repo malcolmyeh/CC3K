@@ -1,6 +1,5 @@
 //Project by Malcolm Yeh, Zayaan Moez, Kai Lu for CS246
 #include <iostream>
-#include <fstream>
 #include <string>
 #include "floor.h"
 #include "game.h"
@@ -8,15 +7,7 @@
 
 int main(void) {
 	Floor floor;
-	std::ifstream in ("map.txt");
-	std::string str;
-	for (int i = 0; i < 25; i++) {
-		getline(in, str);
-		for (int j = 0; j < 79; j++) {
-			floor.displayGrid[i][j] = str[j];
-			floor.defaultGrid[i][j] = str[j]; 
-		}
-	}
+	
 	Posn p = {4, 4};
 	Player *play =  new Human(100, 100, p);
 
