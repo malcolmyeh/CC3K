@@ -31,7 +31,6 @@ class Floor {
 private:
 	int level;
 	bool won;
-	bool stairVisible;
 	bool merchantHostile;
 	bool barrierSpawned;
 
@@ -44,6 +43,7 @@ public:
 	Stair * stair; 
 	Player * player; 
 	barrierSuit *suit; 
+	bool knownPotion[6];
 
 	Floor(int level, bool won, bool hostile, bool spawned, Player * player);
 	Floor();
@@ -58,20 +58,20 @@ public:
 	void generatePosition(int &id, Posn &pos);
 	Posn dragonPosition(Posn pos);
 	void setCompass();
-	std::string moveEnemy();
-	std::string movePlayer();
+	std::string actEnemy();
+	std::string movePlayer(std::string direction);
+	std::string atkPlayer(std::string direction);
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
-	void setVisible(bool visible);
 	void setLevel(int level);
 	void setWon(bool won);
 	void setHostile(bool hostile);
 	void setSpawned(bool spawned);
-	bool getVisible();
 	int getLevel();
 	bool getWon();
 	bool getHostile();
 	bool getSpawned();
+	std::string seePotion();
 	
 };
 

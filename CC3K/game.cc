@@ -4,11 +4,16 @@ std::string Controller::runGame(char type) {
 	gameInit();
 	while (true) {
 		std::string moveStatus;
+<<<<<<< HEAD
 		std::string log;
+=======
+		std::string combatLog;
+>>>>>>> 2e7f90a0e11fbee74afd234e9aaf8e8e2650d38b
 		std::string str;
 		std::cin >> str; 
 		if (validDirection(str)) {
 			moveStatus = floor->movePlayer(str);
+<<<<<<< HEAD
 			if (moveStatus == "valid") {
 				log += "You move " + str + ".";
 			} else if (moveStatus == "invalid") {
@@ -36,10 +41,15 @@ std::string Controller::runGame(char type) {
 		} else if (str == "q") {
 			return "quit";
 		}
+=======
+			if (move)
+		}  
+>>>>>>> 2e7f90a0e11fbee74afd234e9aaf8e8e2650d38b
 	}
 }
 
 void Controller::gameInit() {
+<<<<<<< HEAD
 	this->floor = new Floor();
 	this->display = new Display();
 	this->display->readFloor("map.txt");
@@ -51,6 +61,9 @@ void Controller::gameInit() {
 		}
 	}
 	
+=======
+	floor->initFloor(type);
+>>>>>>> 2e7f90a0e11fbee74afd234e9aaf8e8e2650d38b
 }
 
 bool validDirection(std::string s) {

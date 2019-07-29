@@ -4,7 +4,7 @@
 #include <fstream>
 #include "game.h"
 
-void readFile(std::string file, char &display[27][89]) {
+void readFile(std::string file, char display[27][89]) {
 	std::string str;
 	std::ifstream in (file);
 	for (int i = 0; i < 27; i++)
@@ -17,7 +17,7 @@ void readFile(std::string file, char &display[27][89]) {
     }
 }
 
-void printDisplay(char &display[27][89]) {
+void printDisplay(char display[27][89]) {
 	system("CLS");
 	for (int i = 0; i < 27; i++) {
 		for (int j = 0; j < 89; j++) {
@@ -29,7 +29,7 @@ void printDisplay(char &display[27][89]) {
 
 void printEnd() {
 	system("CLS");
-	std::cout << "Thanks for playing Chamber Crawler 3000" << std::endl << std::endl;
+	std::cout << "Thanks for playing Chamber Crawler 3000 +" << std::endl << std::endl;
 	std::cout << "Project by Malcolm Yeh, Zayaan Moez, Kai Lu for CS246" << std::endl;
 	std::cout << std::endl << std::endl << std::endl;
 }
@@ -53,7 +53,7 @@ int main(void) {
 		std::cout << "Dwarf(100 HP, 20 Atk, 30 Def):  d" << std::endl;
 		std::cout << "Orc(180 HP, 30 Atk, 25 Def):    o" << std::endl;
 		std::cin >> str;
-		} while(str != "h" || str != "e" || str != "d" || str != "o")
+		} while(str != "h" || str != "e" || str != "d" || str != "o");
 		
 		char type = str[0];
 
@@ -70,14 +70,14 @@ int main(void) {
 		} else if (status == "loss") {
 			readFile("gameover.txt", display);
 			printDisplay(display);
-		} else {
+		} else if (status == "quit") {
 			printEnd();
 			break;
 		}
 
 		do {
 			std::cout << std::endl << std::endl;
-			std::cout << "Please enter r to restart or q to Quit."
+			std::cout << "Please enter r to restart or q to Quit.";
 			std::cin >> str;
 		} while(str != "r" || str != "q");
 
@@ -85,7 +85,7 @@ int main(void) {
 			system("CLS");
 			std::cout << "Restarting Game" << std::endl << std::endl << std::endl;
 			continue;
-		} (str == "q") {
+		} else if (str == "q") {
 			printEnd();
 			break;
 		}

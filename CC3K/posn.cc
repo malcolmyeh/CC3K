@@ -33,3 +33,7 @@ Posn Posn::getNew(std::string dir) {
 bool Posn::operator==(const Posn& p) {
 	return this->x == p.x && this->y == this->y;
 }
+
+bool Posn::operator!=(const Posn& p) {
+	return this->x != p.x || this->y != p.y;
+}

@@ -241,7 +241,11 @@ std::string Floor::movePlayer(std::string direction) {
 	Posn p = this->player->position.getNew(direction);
 	if (validMove(p)){
 		if (p == this->stair->getPosition()){
+<<<<<<< HEAD
 			return "newfloor";
+=======
+			return "newfloor"
+>>>>>>> 2e7f90a0e11fbee74afd234e9aaf8e8e2650d38b
 		}
 		displayGrid[this->player->position.y][this->player->position.x] = '.';
 		displayGrid[p.y][p.x] = this->player->getSymbol();
