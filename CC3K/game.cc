@@ -6,8 +6,10 @@ Controller::~Controller() {
 }
 
 std::string Controller::runGame(char type) {
+
 	gameInit(type);
-	display->printFloor(floor,"game start");
+	
+	display->printFloor(floor,"You have entered the dungeon.");
 	while (true) {
 		std::string moveStatus;
 		std::string log;
@@ -130,6 +132,10 @@ void Controller::newFloor() {
 	this->display->updateDisplay(floor);
 	delete tmpf;
 	delete tmpd;
+}
+
+void Controller::gameRead() {
+	
 }
 
 double Controller::getScore() {

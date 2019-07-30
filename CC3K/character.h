@@ -30,9 +30,6 @@ public:
 
     virtual Posn getPosition();
     virtual void move(Posn position);
-    /*Posn getPosition();
-    void move(Posn position);*/
-
 
     virtual void takeDamage(int amount);
     virtual std::string dealDamage(Character *opponent) = 0;

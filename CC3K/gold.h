@@ -28,13 +28,8 @@ class smallHoard: public Gold {
 };
 
 class dragonHoard: public Gold {
-    private:
-        //Enemy *dragon;
     public:
-        //dragonHoard(Posn p, Enemy *dragon);
         dragonHoard(Posn p);
-        //void setDragon(Enemy *dragon);
-        //Enemy *getDragon();
 };
 
 #endif

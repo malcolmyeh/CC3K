@@ -23,7 +23,7 @@ public:
     void setCompass(bool compass);
     virtual Gold *getHoard();
     virtual barrierSuit *getSuit();
-    //virtual void move(Posn position) override;
+
 };
 
 

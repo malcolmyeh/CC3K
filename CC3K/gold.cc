@@ -17,14 +17,6 @@ smallHoard::smallHoard(Posn p) {
     this->guarded = "false";
 }
 
-/*dragonHoard::dragonHoard(Posn p, Enemy *dragon) {
-    this->p = p;
-    this->dragon = dragon;
-    this->type = "dragonHoard";
-    this->symbol = 'G';
-}*/
-
-
 dragonHoard::dragonHoard(Posn p) {
     this->p = p;
     this->type = "dragonHoard";
@@ -32,14 +24,6 @@ dragonHoard::dragonHoard(Posn p) {
     this->value = 6;
     this->guarded = "true";
 }
-
-/*void dragonHoard::setDragon(Enemy *dragon) {
-    this->dragon = dragon;
-}
-
-Enemy *dragonHoard::getDragon() {
-    return this->dragon;
-}*/
 
 // Accessors
 int Gold::getValue() {
