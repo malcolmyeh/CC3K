@@ -18,4 +18,3 @@ AtkBuff::~AtkBuff()
 {
     delete this->player;
 }
-

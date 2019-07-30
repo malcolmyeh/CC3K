@@ -12,7 +12,7 @@ void Display::readFloor(std::string file) {
 }
 
 void Display::printFloor(Floor *floor, std::string log){
-	cout << "\033[2J\033[1;1H";
+	std::cout << "\033[2J\033[1;1H";
 	for (int i = 0; i < 25; i++) {
 		for (int j = 0; j < 79; j++) {
 			std::cout << displayGrid[i][j];
