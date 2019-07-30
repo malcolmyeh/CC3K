@@ -150,3 +150,12 @@ std::string Buff::dealDamage(Character *opponent)
     }
     return combatMsg;
 }
+
+
+/* Posn Buff::getPosition(){
+    return this->getPlayer()->getPosition();
+}*/
+
+/* void Buff::move(Posn p){
+    this->getPlayer()->move(p);
+}*/

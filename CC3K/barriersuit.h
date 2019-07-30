@@ -7,13 +7,14 @@
 class barrierSuit : public Item {
 	private:
 		bool guarded;
-		Enemy *dragon;
+		//Enemy *dragon;
     public:
-        barrierSuit(Posn p, Enemy *dragon);
+        //barrierSuit(Posn p, Enemy *dragon);
+        barrierSuit(Posn p);
         bool isGuarded();
         void setGuarded(bool b);
-        void setDragon(Enemy *dragon);
-        Enemy *getDragon();
+        //void setDragon(Enemy *dragon);
+        //Enemy *getDragon();
 };
 
 #endif

@@ -6,9 +6,9 @@ Controller::~Controller() {
 }
 
 std::string Controller::runGame(char type) {
-
+	std::cout << "check 1" << std::endl;
 	gameInit(type);
-
+	std::cout << "check 2" << std::endl;
 	display->printFloor(floor,"game start");
 	while (true) {
 		std::string moveStatus;
@@ -26,7 +26,7 @@ std::string Controller::runGame(char type) {
 					return "won";
 				}
 				this->newFloor();
-				log += "Welcome to floor " + std::to_string(floor->getLevel);
+				log += "Welcome to floor " + std::to_string(floor->getLevel());
 			} else {
 				log += moveStatus;
 			}
@@ -79,9 +79,13 @@ std::string Controller::runGame(char type) {
 }
 
 void Controller::gameInit(char type) {
+	std::cout << "initcheck 1" << std::endl;
 	this->floor = new Floor(1, false, false);
+	std::cout << "initcheck 2" << std::endl;
 	this->display = new Display();
+	std::cout << "initcheck 3" << std::endl;
 	this->display->readFloor("map.txt");
+	std::cout << "initcheck 4" << std::endl;
 	for (int i = 0; i < 25; i++) {
 		for (int j = 0; j < 79; j++) {
 			char c = this->display->getChar(i, j);
@@ -89,9 +93,11 @@ void Controller::gameInit(char type) {
 			floor->defaultGrid[i][j] = c;
 		}
 	}
-	
+	std::cout << "initcheck 5" << std::endl;
 	this->floor->initFloor(type);
+	std::cout << "initcheck 6" << std::endl;
 	this->display->updateDisplay(floor);
+	std::cout << "initcheck 7" << std::endl;
 	
 }
 
@@ -109,10 +115,10 @@ void Controller::newFloor() {
 	int Def = play->getPlayer()->getDef();
 	bool hasBarrier = play->barrier();
 
-	if (play->getRace == "Human") { type = 'h'; }
-	if (play->getRace == "Orc") { type = 'o'; }
-	if (play->getRace == "Elf") { type = 'e'; }
-	if (play->getRace == "Dwarf") { type = 'd'; }
+	if (play->getRace() == "Human") { type = 'h'; }
+	if (play->getRace() == "Orc") { type = 'o'; }
+	if (play->getRace() == "Elf") { type = 'e'; }
+	if (play->getRace() == "Dwarf") { type = 'd'; }
 
 	this->floor = new Floor(level, hostile, spawned);
 	this->display = new Display();
@@ -132,10 +138,10 @@ void Controller::newFloor() {
 }
 
 double Controller::getScore() {
-	if (floor->player->getRace == "Human") { return (double)floor->player->getGold() * 1.5; }
-	if (floor->player->getRace == "Orc") { return (double)floor->player->getGold() / 2.0; }
-	if (floor->player->getRace == "Elf") { return (double)floor->player->getGold(); }
-	if (floor->player->getRace == "Dwarf") { return (double)floor->player->getGold() * 2.0; }
+	if (floor->player->getRace() == "Human") { return (double)floor->player->getGold() * 1.5; }
+	if (floor->player->getRace() == "Orc") { return (double)floor->player->getGold() / 2.0; }
+	if (floor->player->getRace() == "Elf") { return (double)floor->player->getGold(); }
+	if (floor->player->getRace() == "Dwarf") { return (double)floor->player->getGold() * 2.0; }
 	return 0;
 }
 

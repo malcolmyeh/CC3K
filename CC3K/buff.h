@@ -20,6 +20,8 @@ class Buff : public Player {
      	char getSymbol() override;
      	void takeDamage(int amount) override;
      	std::string dealDamage(Character *opponent) override;
+        //Posn getPosition() override;
+        //void move(Posn p) override;*/
 };
 
 #endif

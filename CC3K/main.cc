@@ -82,9 +82,9 @@ int main(void) {
 
 		do {
 			std::cout << std::endl << std::endl;
-			std::cout << "Please enter r to restart or q to Quit.";
+			std::cout << "Please enter r to restart or q to Quit." << std::endl;
 			std::cin >> str;
-		} while(str != "r" || str != "q");
+		} while(str != "r" && str != "q");
 
 		if (str == "r") {
 			system("CLS");

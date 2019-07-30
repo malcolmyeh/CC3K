@@ -15,16 +15,32 @@ Floor::Floor(int level, bool hostile, bool spawned) {
 
 Floor::~Floor() {
 	for (int i = 0; i < enemies.size(); ++i) {
-		delete enemies.at(i);
+		//delete enemies.at(i);
+		Enemy * temp = enemies.at(i);
+		enemies.erase(enemies.begin() + i);
+		delete temp;
+		--i;
 	}
 	for (int i = 0; i < golds.size(); ++i) { 
-		delete golds.at(i); 
+		//delete golds.at(i); 
+		Gold * temp = golds.at(i);
+		golds.erase(golds.begin() + i);
+		delete temp;
+		--i;
 	}
 	for (int i = 0; i < potions.size(); ++i) {
-		delete potions.at(i);
+		//delete potions.at(i);
+		Potion * temp = potions.at(i);
+		potions.erase(potions.begin() + i);
+		delete temp;
+		--i;
 	}
 	for (int i = 0; i < chambers.size(); ++i) {
-		delete chambers.at(i);
+		//delete chambers.at(i);
+		Chamber * temp = chambers.at(i);
+		chambers.erase(chambers.begin() + i);
+		delete temp;
+		--i;
 	}
 	delete this->player;
 	delete this->stair;
@@ -56,12 +72,19 @@ void Floor::initFloor(char type) {
 	int id;
 	int dragons = 0;
 	srand(time(NULL));
+	std::cout << "floorcheck 1" << std::endl;
 	generateChamber();
+	std::cout << "floorcheck 2" << std::endl;
 	generatePlayer(type, id);
+	std::cout << "floorcheck 3" << std::endl;
 	generateStair(id);
+	std::cout << "floorcheck 4" << std::endl;
 	generateItems(dragons);
+	std::cout << "floorcheck 5" << std::endl;
 	generateEnemies(dragons);
+	std::cout << "floorcheck 6" << std::endl;
 	assignCompass();
+	std::cout << "floorcheck 7" << std::endl;
 }
 
 void Floor::initNext(char type, int HP, int gold, int Atk, int Def, bool hasBarrier) {
@@ -143,26 +166,40 @@ void Floor::generateEnemies(int dragons) {
 		int num = rand() % 18 + 1;
 		int id;
 		Posn pos;
+		std::cout << "enemy 1" << std::endl;
 		generatePosition(id, pos);
+		std::cout << "enemy 2" << std::endl;
 		Enemy *e;
 		if (num <= 4) {
 			e = new Werewolf(pos, id);
+			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
+			std::cout << "push" << std::endl;
 		} else if (num > 4 && num <= 7) {
 			e = new Vampire(pos, id);
+			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
+			std::cout << "push" << std::endl;
 		} else if (num > 7 && num <= 12) {
 			e = new Goblin(pos, id);
+			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
+			std::cout << "push" << std::endl;
 		} else if (num > 12 && num <= 14) {
 			e = new Troll(pos, id);
+			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
+			std::cout << "push" << std::endl;
 		} else if (num > 14 && num <= 16) {
+			std::cout << "new" << std::endl;
 			e = new Phoenix(pos, id);
+			std::cout << "push" << std::endl;
 			this->enemies.push_back(e);
 		} else if (num > 16 && num <= 18) {
 			e = new Merchant(pos, id);
+			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
+			std::cout << "push" << std::endl;
 		}
 		displayGrid[pos.y][pos.x] = e->getSymbol();
 	}
@@ -212,12 +249,10 @@ void Floor::generateItems(int &dragons) {
 			i = new smallHoard(pos);
 			this->golds.push_back(i);
 		} else if (num == 8) {
-			dragonHoard *dh = new dragonHoard(pos, NULL);
-			i = dh;
+			i = new dragonHoard(pos);
 			this->golds.push_back(i);
 			Posn dpos = dragonPosition(pos);
-			Enemy *e = new Dragon(dpos, dh, NULL, id);
-			dh->setDragon(e);
+			Enemy *e = new Dragon(dpos, i, NULL, id);
 			this->enemies.push_back(e);
 			
 			++dragons;
@@ -231,12 +266,11 @@ void Floor::generateItems(int &dragons) {
 		int id;
 		Posn pos;
 		generatePosition(id, pos);
-		this->suit = new barrierSuit(pos, NULL);
+		this->suit = new barrierSuit(pos);
 		this->barrierSpawned = true;
 		displayGrid[pos.y][pos.x] = this->suit->getSymbol();
 		Posn dpos = dragonPosition(pos);
 		Enemy *e = new Dragon(dpos, NULL, this->suit, id);
-		this->suit->setDragon(e);
 		this->enemies.push_back(e);
 		++dragons;
 		displayGrid[dpos.y][dpos.x] = e->getSymbol();
@@ -253,33 +287,36 @@ std::string Floor::actEnemy() {
 	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "sw", "se"};
 	for (int i = 0; i < enemies.size(); ++i) {
 		Enemy *e = enemies.at(i);
-		if ((e->withinRange(this->player->position) && e->getRace != "Merchant") ||
-		(e->getRace == "Merchant" && this->getHostile)) {
+		if ((e->withinRange(this->player->position) && e->getRace() != "Merchant") ||
+		(e->getRace() == "Merchant" && this->getHostile())) {
 			combatLog += e->dealDamage(this->player);
-		} else {
+		} else if (e->getRace() != "Dragon"){
 			Posn p;
 			do {
 				int num = rand() % 8;
 				p = e->position.getNew(dir[num]);
 			} while(!validTile(p));
 			displayGrid[e->position.y][e->position.x] = '.';
-			displayGrid[p.y][p.x] = e->getSymbol();
 			e->move(p);
+			displayGrid[e->position.y][e->position.x] = e->getSymbol();
 		}
 	}
 	return combatLog; 
 }
 
 std::string Floor::movePlayer(std::string direction) {
+	
 	Posn p = this->player->position.getNew(direction);
+	std::cout << "check 1" << std::endl;
 	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "sw", "se"};
 	std::string dir2[8] = {"East", "West", "North", "South", "Northeast", "Northwest", "Southwest", "Southeast"};
 	std::string log;
 	if (validMove(p)){
+		std::cout << "check 2" << std::endl;
 		std::string gold;
 		bool g;
 		if (displayGrid[p.y][p.x] == 'G') {
-			gold += pickGold(p);
+			gold = pickGold(p);
 			if (gold == "invalid") {
 				return gold;
 			}
@@ -299,13 +336,17 @@ std::string Floor::movePlayer(std::string direction) {
 			log += gold;
 		}
 		std::string potion;
-		potion += seePotion();
+		potion = seePotion(p);
 		if (potion != "invalid") {
 			log += potion;
 		}
+		std::cout << "check 3" << std::endl;
 		displayGrid[this->player->position.y][this->player->position.x] = defaultGrid[this->player->position.y][this->player->position.x];
+		std::cout << "check 4" << std::endl;
 		displayGrid[p.y][p.x] = this->player->getSymbol();
+		std::cout << "check 5" << std::endl;
 		this->player->move(p);
+		std::cout << "check 6" << std::endl;
 		return log;
 	}
 	return "invalid";
@@ -313,7 +354,7 @@ std::string Floor::movePlayer(std::string direction) {
 
 std::string Floor::pickGold(Posn p) {
 	for (int i = 0; i < golds.size(); i++) {
-		if (golds.at(i)->getPosition == p) {
+		if (golds.at(i)->getPosition() == p) {
 			Gold *tmp = golds.at(i);
 			if (!(tmp->isGuarded())) {
 				int value = tmp->getValue();
@@ -327,9 +368,9 @@ std::string Floor::pickGold(Posn p) {
 	return "invalid";
 }
 
-std::string Floor::seePotion(){
+std::string Floor::seePotion(Posn p){
 	for (int i = 0; i < potions.size(); ++i){
-		if (potions.at(i)->getSymbol() == 'P' && potions.at(i)->withinRange(this->player->position)) {
+		if (potions.at(i)->getSymbol() == 'P' && potions.at(i)->withinRange(p)) {
 			if(potions.at(i)->getType() == "RH"){
 				if (knownPotion[0]){
 					return "You see a Restore Health potion. ";
@@ -363,43 +404,56 @@ std::string Floor::seePotion(){
 
 std::string Floor::usePotion(std::string direction){
 	Posn p = this->player->position.getNew(direction);
+	std::string log;
 	for (int i = 0; i < this->potions.size(); ++i){
 		if (p == this->potions.at(i)->getPosition()){
 			if(this->potions.at(i)->getType() == "RH"){
 				this->player->heal(10);
-				return "Restore Health potion restores 10 HP (HP: " + std::to_string(this->player.getHealth()) + "). ";
+				this->knownPotion[0] = true;
+				log = "Restore Health potion restores 10 HP (HP: " + std::to_string(this->player->getHP()) + "). ";
 			} else if (this->potions.at(i)->getType() == "BA"){
-				this->player = new atkBuff(this->player, 5);
-				return "Boost Attack potion grants 5 damage (Atk: " + std::to_string(this->player.getAtk()) + "). ";				
+				this->player = new AtkBuff(this->player, 5);
+				this->knownPotion[1] = true;
+				log =  "Boost Attack potion grants 5 damage (Atk: " + std::to_string(this->player->getAtk()) + "). ";				
 			} else if (this->potions.at(i)->getType() == "BD"){
-				this->player = new defBuff(this->player, 5);
-				return "Boost Defense potion grants 5 defense (Atk: " + std::to_string(this->player.Def()) + "). ";				
+				this->player = new DefBuff(this->player, 5);
+				this->knownPotion[2] = true;
+				log =  "Boost Defense potion grants 5 defense (Def: " + std::to_string(this->player->getDef()) + "). ";				
 			} else if (this->potions.at(i)->getType() == "PH"){
-				if (this->player->getRace == "Elf"){
+				this->knownPotion[3] = true;
+				if (this->player->getRace() == "Elf"){
 					this->player->heal(10);
-					return "Poison Health potion restores 10 HP (HP: " + std::to_string(this->player.getHealth()) + "). ";
+					log =  "Poison Health potion restores 10 HP (HP: " + std::to_string(this->player->getHP()) + "). ";
 				} else {
 					this->player->heal(-10);
-					return "Poison Health potion deals 10 damage (HP: " + std::to_string(this->player->getHealth()) + "). ";
+					log =  "Poison Health potion deals 10 damage (HP: " + std::to_string(this->player->getHP()) + "). ";
 				}		
 			} else if (this->potions.at(i)->getType() == "WA"){
-				if (this->player->getRace == "Elf"){
-					this->player = new atkBuff(this->player, 5);
-					return "Wound Attack potion grants 5 damage (Atk: " + std::to_string(this->player.getAtk()) + "). ";
+				this->knownPotion[4] = true;
+				if (this->player->getRace() == "Elf"){
+					this->player = new AtkBuff(this->player, 5);
+					log =  "Wound Attack potion grants 5 damage (Atk: " + std::to_string(this->player->getAtk()) + "). ";
 				} else {
-					this->player = new atkBuff(this->player, -5);
-					return "Wound Attack potion reduces 5 damage (Atk: " + std::to_string(this->player.getAtk()) + "). ";				
+					this->player = new AtkBuff(this->player, -5);
+					log =  "Wound Attack potion reduces 5 damage (Atk: " + std::to_string(this->player->getAtk()) + "). ";				
 				}								
 			} else if (this->potions.at(i)->getType() == "WD"){
-				if (this->player->getRace == "Elf"){
-					this->player = new defBuff(this->player, 5);
-					return "Wound Defense potion grants 5 defense (Atk: " + std::to_string(this->player.Def()) + "). ";
+				this->knownPotion[5] = true;
+				if (this->player->getRace() == "Elf"){
+					this->player = new DefBuff(this->player, 5);
+					log =  "Wound Defense potion grants 5 defense (Def: " + std::to_string(this->player->getDef()) + "). ";
 				} else {
-					this->player = new defBuff(this->player, -5);
-					return "Wound Defense potion reduces 5 defense (Atk: " + std::to_string(this->player.Def()) + "). ";
+					this->player = new DefBuff(this->player, -5);
+					log =  "Wound Defense potion reduces 5 defense (Def: " + std::to_string(this->player->getDef()) + "). ";
 				}							
 			}
+			displayGrid[p.y][p.x] = defaultGrid[p.y][p.x];
+			Potion * temp = this->potions.at(i);
+			this->potions.erase(this->potions.begin() + i);
+			delete temp;
+			return log;
 		}
+		
 	}
 	return "No potion in direction. ";
 }

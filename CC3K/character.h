@@ -22,10 +22,18 @@ public:
     virtual int getDef();
     virtual int getHP();
     virtual int getGold();
-    Posn getPosition();
     virtual std::string getRace();
     virtual char getSymbol();
+
+
+
+
+    Posn getPosition();
     void move(Posn position);
+    /*Posn getPosition();
+    void move(Posn position);*/
+
+
     virtual void takeDamage(int amount);
     virtual std::string dealDamage(Character *opponent) = 0;
     void getStunned();

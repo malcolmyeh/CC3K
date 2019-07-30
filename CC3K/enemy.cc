@@ -64,3 +64,16 @@ void Enemy::setCompass(bool compass)
     this->hasCompass = compass;
 }
 
+Gold *Enemy::getHoard(){
+    return NULL;
+}
+
+
+barrierSuit *Enemy::getSuit(){
+    return NULL;
+}
+
+/* void Enemy::move(Posn p){
+    this->position.x = position.x;
+    this->position.y = position.y;
+}*/

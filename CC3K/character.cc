@@ -1,6 +1,5 @@
 #include "character.h"
 
-
 int Character::getAtk()
 {
     return this->Atk;

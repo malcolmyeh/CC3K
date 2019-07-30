@@ -29,11 +29,12 @@ class smallHoard: public Gold {
 
 class dragonHoard: public Gold {
     private:
-        Enemy *dragon;
+        //Enemy *dragon;
     public:
-        dragonHoard(Posn p, Enemy *dragon);
-        void setDragon(Enemy *dragon);
-        Enemy *getDragon();
+        //dragonHoard(Posn p, Enemy *dragon);
+        dragonHoard(Posn p);
+        //void setDragon(Enemy *dragon);
+        //Enemy *getDragon();
 };
 
 #endif

@@ -26,6 +26,9 @@
 #include "potion.h"
 #include "gold.h"
 #include "barriersuit.h"
+#include "buff.h"
+#include "defbuff.h"
+#include "atkbuff.h"
 
 
 class Floor {
@@ -63,7 +66,7 @@ public:
 	std::string movePlayer(std::string direction);
 	std::string pickGold(Posn p);
 	std::string atkPlayer(std::string direction);
-	std::string seePotion();
+	std::string seePotion(Posn p);
 	std::string usePotion(std::string direction);
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
@@ -73,7 +76,6 @@ public:
 	int getLevel();
 	bool getHostile();
 	bool getSpawned();
-	std::string seePotion();
 	
 };
 

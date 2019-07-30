@@ -6,6 +6,9 @@
 #include "gold.h"
 #include "barriersuit.h"
 
+class Gold;
+
+class barrierSuit;
 
 class Enemy : public Character
 {
@@ -18,8 +21,9 @@ public:
     int cID();
     bool withinRange(Posn player);
     void setCompass(bool compass);
-    virtual dragonHoard *getHoard() = 0;
-    virtual barrierSuit *getSuit() = 0;
+    virtual Gold *getHoard();
+    virtual barrierSuit *getSuit();
+    //virtual void move(Posn position) override;
 };
 
 

@@ -16,7 +16,7 @@ character.o: character.cc character.h posn.h
 player.o: player.cc character.h player.h
 		g++ -std=c++14 -Werror=vla -c player.cc
 
-enemy.o: enemy.cc character.h enemy.h
+enemy.o: enemy.cc character.h enemy.h gold.h barriersuit.h
 		g++ -std=c++14 -Werror=vla -c enemy.cc
 
 human.o: human.cc human.h player.h
@@ -55,7 +55,7 @@ dragon.o: dragon.cc dragon.h enemy.h barriersuit.h gold.h
 item.o: item.cc item.h posn.h
 		g++ -std=c++14 -Werror=vla -c item.cc
 
-gold.o: gold.cc gold.h item.h
+gold.o: gold.cc gold.h item.h enemy.h
 		g++ -std=c++14 -Werror=vla -c gold.cc
 
 potion.o: potion.cc potion.h item.h
