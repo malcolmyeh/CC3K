@@ -15,6 +15,19 @@ Dwarf::Dwarf(int HP, int gold, Posn position)
     this->hasBarrier = false;
 }
 
+Dwarf::Dwarf(int HP, int gold, Posn position, int Atk, int Def, bool hasBarrier)
+{
+    this->Atk = Atk;
+    this->Def = Def;
+    this->HP = HP;
+    this->gold = gold;
+    this->race = "Dwarf";
+    this->symbol = '@';
+    this->position = position;
+    this->MaxHP = 100;
+    this->hasBarrier = hasBarrier;
+}
+
 Dwarf::~Dwarf() {}
 
 std::string Dwarf::dealDamage(Character *opponent)
