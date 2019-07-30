@@ -9,6 +9,7 @@ class Dwarf : public Player
 {
 public:
     Dwarf(int HP, int gold, Posn position);
+    Dwarf(int HP, int gold, Posn position, int Atk, int Def, bool hasBarrier);
     ~Dwarf();
     std::string dealDamage(Character *opponent) override;
 };

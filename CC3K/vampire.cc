@@ -45,6 +45,9 @@ std::string Vampire::dealDamage(Character *opponent)
     opponent->takeDamage((int)amount);
 
     this->HP += ((int)lifesteal);
+    if (this->HP > 50){
+        this->HP = 50;
+    }
 
     combatMsg = attacker + " deals " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
     combatMsg += "Vampire lifesteals for " + std::to_string((int)lifesteal) + " HP (HP: " + std::to_string(this->HP) + "). ";

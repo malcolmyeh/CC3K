@@ -16,6 +16,18 @@ Elf::Elf(int HP, int gold, Posn position)
 
 }
 
+Elf::Elf(int HP, int gold, Posn position, int Atk, int Def, bool hasBarrier){
+    this->Atk = Atk;
+    this->Def = Def;
+    this->HP = HP;
+    this->gold = gold;
+    this->race = "Elf";
+    this->symbol = '@';
+    this->position = position;
+    this->MaxHP = 140;
+    this->hasBarrier = hasBarrier;
+}
+
 Elf::~Elf() {}
 
 std::string Elf::dealDamage(Character *opponent)

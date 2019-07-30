@@ -9,6 +9,7 @@ class Human : public Player
 {
 public:
     Human(int HP, int gold, Posn position);
+    Human(int HP, int gold, Posn position, int Atk, int Def, bool hasBarrier);
     ~Human();
 };
 

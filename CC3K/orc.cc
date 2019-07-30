@@ -13,6 +13,19 @@ Orc::Orc(int HP, int gold, Posn position)
     this->hasBarrier = false;
 }
 
+Orc::Orc(int HP, int gold, Posn position, int Atk, int Def, bool hasBarrier)
+{
+    this->Atk = Atk;
+    this->Def = Def;
+    this->HP = HP;
+    this->gold = gold;
+    this->race = "Orc";
+    this->symbol = '@';
+    this->position = position;
+    this->MaxHP = 180;
+    this->hasBarrier = hasBarrier;
+}
+
 Orc::~Orc() {}
 
 std::string Orc::dealDamage(Character *opponent)

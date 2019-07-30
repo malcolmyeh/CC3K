@@ -47,7 +47,7 @@ std::string Phoenix::dealDamage(Character *opponent)
     else if (rand() % 5 == 1 || rand() % 5 == 2)
     {
         //critical strike
-        amount *= 1.5;
+        amount *= 1.25;
         opponent->takeDamage((int)amount);
         combatMsg = attacker + " unleashes its fire energy, dealing " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
     }
