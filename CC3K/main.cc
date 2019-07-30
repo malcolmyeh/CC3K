@@ -60,7 +60,7 @@ int main() {
 		char type = str[0];
 
 		Controller c;
-		status = c.runGame(type, commandLine, file);
+		status = c.runGame(type);
 		
 		if (status == "restart") {
 			system("CLS");
