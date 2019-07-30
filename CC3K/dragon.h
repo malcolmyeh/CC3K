@@ -16,7 +16,7 @@ public:
     barrierSuit *getSuit() override;
     void setPos(Posn pos);
     std::string dealDamage(Character *opponent) override;
-    //void move(Posn position) override;
+
 };
 
 #endif

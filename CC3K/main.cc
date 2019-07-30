@@ -34,7 +34,7 @@ void printEnd() {
 	std::cout << std::endl << std::endl << std::endl;
 }
 
-int main(void) {
+int main() {
 
 	char display[27][89];
 	readFile("menu.txt", display);
@@ -62,7 +62,6 @@ int main(void) {
 		Controller c;
 		status = c.runGame(type);
 		
-
 		if (status == "restart") {
 			system("CLS");
 			std::cout << "Restarting Game" << std::endl << std::endl << std::endl;
