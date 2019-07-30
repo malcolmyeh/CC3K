@@ -18,7 +18,7 @@ protected:
     Posn position;
 public:
     
-    void updateGold(int amount);
+    virtual void updateGold(int amount);
     virtual int getAtk();
     virtual int getDef();
     virtual int getHP();
