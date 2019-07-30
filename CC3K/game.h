@@ -16,6 +16,7 @@ private:
 
 public:
 	Controller() {}
+	~Controller();
 	std::string runGame(char type);
 	void gameInit(char type);
 

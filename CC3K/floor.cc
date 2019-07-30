@@ -88,7 +88,7 @@ void Floor::generatePlayer(char type, int &id) {
 	Posn p;
 	do {
 		p = c->getPosition();
-	} while (!this->displayGrid[p.y][p.x] == '.');
+	} while (!(this->displayGrid[p.y][p.x] == '.'));
 
 
 	if (type == 'h') {
@@ -112,10 +112,9 @@ void Floor::generateStair(int id) {
 	Chamber *c = chambers.at(id2 - 1);
 	do {
 		p = c->getPosition();
-	} while (!this->displayGrid[p.y][p.x] == '.');
+	} while (!(this->displayGrid[p.y][p.x] == '.'));
 	 
 	this->stair = new Stair(p);
-	displayGrid[this->stair->getPosition().y][this->stair->getPosition().x] = '/';
 }
 
 void Floor::generateEnemies(int dragons) {
@@ -251,6 +250,9 @@ std::string Floor::actEnemy() {
 
 std::string Floor::movePlayer(std::string direction) {
 	Posn p = this->player->position.getNew(direction);
+	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "sw", "se"};
+	std::string dir2[8] = {"East", "West", "North", "South", "Northeast", "Northwest", "Southwest", "Southeast"};
+	std::string log;
 	if (validMove(p)){
 		if (p == this->stair->getPosition()){
 			return "newfloor";
@@ -258,10 +260,18 @@ std::string Floor::movePlayer(std::string direction) {
 		displayGrid[this->player->position.y][this->player->position.x] = defaultGrid[this->player->position.y][this->player->position.x];
 		displayGrid[p.y][p.x] = this->player->getSymbol();
 		this->player->move(p);
-		return "valid";
+		log += "You move "
+		for (int i = 0; i < 8; i++) {
+			if (dir[i] == direction) {
+				log += dir2[i];
+				return log;
+			}
+		}
 	}
 	return "invalid";
 }
+
+std::string 
 
 /*std::string Floor::seePotion(){
 	for (int i = 0; i < item)
@@ -277,7 +287,8 @@ std::string Floor::atkPlayer(std::string direction){
 				Enemy * temp = this->enemies.at(i);
 				this->enemies.erase(this->enemies.begin()+i);
 				displayGrid[temp->position.y][temp->position.x] = '.';
-				if (temp->compass()){
+				if (temp->compass()) {
+					combatLog += "You found the compass. The stairs are now visible."
 					displayGrid[this->stair->getPosition().y][this->stair->getPosition().x] = '/';
 				}
 				delete temp;
@@ -295,7 +306,6 @@ bool Floor::validMove(Posn pos) {
 
 bool Floor::validTile(Posn pos) {
 	return this->displayGrid[pos.y][pos.x] == '.' && pos != this->stair->getPosition();
-	//return this->displayGrid[pos.y][pos.x] == '.';
 }
 
 void Floor::setLevel(int level) {

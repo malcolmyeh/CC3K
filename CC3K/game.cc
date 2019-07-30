@@ -1,5 +1,10 @@
 #include "game.h"
 
+Controller::~Controller() {
+	delete floor;
+	delete display;
+}
+
 std::string Controller::runGame(char type) {
 
 	gameInit(type);
@@ -12,14 +17,14 @@ std::string Controller::runGame(char type) {
 		std::cin >> str; 
 		if (validDirection(str)) {
 			moveStatus = floor->movePlayer(str);
-			if (moveStatus == "valid") {
-				log += "You move " + str + ". ";
-			} else if (moveStatus == "invalid") {
+			if (moveStatus == "invalid") {
 				log += "Move is invalid.";
 				display->printFloor(floor, log);
 				continue;
 			} else if (moveStatus == "newfloor") {
 				return "quit";
+			} else {
+				log += moveStatus;
 			}
 		} else if (str == "a") {
 			std::cin >> str;
@@ -55,9 +60,15 @@ std::string Controller::runGame(char type) {
 		}
 		log += floor->actEnemy();
 		display->updateDisplay(floor);
-		display->printFloor(floor, log);	}
-	delete floor;
-	delete display;
+		display->printFloor(floor, log);
+		if (floor->player->getHP() == 0) {
+			std::cout << std::endl;
+			std::cout << "Game over!" << std::endl;
+			std::cout << "Enter any command to continue:" << std::endl;
+			cin >> str;
+			return "loss";
+		}	
+	}
 }
 
 void Controller::gameInit(char type) {
