@@ -72,19 +72,12 @@ void Floor::initFloor(char type) {
 	int id;
 	int dragons = 0;
 	srand(time(NULL));
-	std::cout << "floorcheck 1" << std::endl;
 	generateChamber();
-	std::cout << "floorcheck 2" << std::endl;
 	generatePlayer(type, id);
-	std::cout << "floorcheck 3" << std::endl;
 	generateStair(id);
-	std::cout << "floorcheck 4" << std::endl;
 	generateItems(dragons);
-	std::cout << "floorcheck 5" << std::endl;
 	generateEnemies(dragons);
-	std::cout << "floorcheck 6" << std::endl;
 	assignCompass();
-	std::cout << "floorcheck 7" << std::endl;
 }
 
 void Floor::initNext(char type, int HP, int gold, int Atk, int Def, bool hasBarrier) {
@@ -140,7 +133,7 @@ void Floor::generatePlayer(char type, int &id) {
 	} else if (type == 'o') {
 		this->player = new Orc(180, 0, p);
 	} else if (type == 'e') {
-		this->player = new Elf(140, 0, p);
+		this->player = new Elf(1400, 0, p);
 	} else if (type == 'd') {
 		this->player = new Dwarf(100, 0, p);
 	}
@@ -159,6 +152,7 @@ void Floor::generateStair(int id) {
 	} while (!(this->displayGrid[p.y][p.x] == '.'));
 	 
 	this->stair = new Stair(p);
+	displayGrid[p.y][p.x] = '/';
 }
 
 void Floor::generateEnemies(int dragons) {
@@ -166,40 +160,26 @@ void Floor::generateEnemies(int dragons) {
 		int num = rand() % 18 + 1;
 		int id;
 		Posn pos;
-		std::cout << "enemy 1" << std::endl;
 		generatePosition(id, pos);
-		std::cout << "enemy 2" << std::endl;
 		Enemy *e;
 		if (num <= 4) {
 			e = new Werewolf(pos, id);
-			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
-			std::cout << "push" << std::endl;
 		} else if (num > 4 && num <= 7) {
 			e = new Vampire(pos, id);
-			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
-			std::cout << "push" << std::endl;
 		} else if (num > 7 && num <= 12) {
 			e = new Goblin(pos, id);
-			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
-			std::cout << "push" << std::endl;
 		} else if (num > 12 && num <= 14) {
 			e = new Troll(pos, id);
-			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
-			std::cout << "push" << std::endl;
 		} else if (num > 14 && num <= 16) {
-			std::cout << "new" << std::endl;
 			e = new Phoenix(pos, id);
-			std::cout << "push" << std::endl;
 			this->enemies.push_back(e);
 		} else if (num > 16 && num <= 18) {
 			e = new Merchant(pos, id);
-			std::cout << "new" << std::endl;
 			this->enemies.push_back(e);
-			std::cout << "push" << std::endl;
 		}
 		displayGrid[pos.y][pos.x] = e->getSymbol();
 	}
@@ -287,18 +267,18 @@ std::string Floor::actEnemy() {
 	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "sw", "se"};
 	for (int i = 0; i < enemies.size(); ++i) {
 		Enemy *e = enemies.at(i);
-		if ((e->withinRange(this->player->position) && e->getRace() != "Merchant") ||
-		(e->getRace() == "Merchant" && this->getHostile())) {
+		if ((e->withinRange(this->player->getPosition()) && e->getRace() != "Merchant") ||
+		(e->getRace() == "Merchant" && this->getHostile() && e->withinRange(this->player->getPosition()))) {
 			combatLog += e->dealDamage(this->player);
 		} else if (e->getRace() != "Dragon"){
 			Posn p;
 			do {
 				int num = rand() % 8;
-				p = e->position.getNew(dir[num]);
+				p = e->getPosition().getNew(dir[num]);
 			} while(!validTile(p));
-			displayGrid[e->position.y][e->position.x] = '.';
+			displayGrid[e->getPosition().y][e->getPosition().x] = '.';
 			e->move(p);
-			displayGrid[e->position.y][e->position.x] = e->getSymbol();
+			displayGrid[e->getPosition().y][e->getPosition().x] = e->getSymbol();
 		}
 	}
 	return combatLog; 
@@ -306,13 +286,11 @@ std::string Floor::actEnemy() {
 
 std::string Floor::movePlayer(std::string direction) {
 	
-	Posn p = this->player->position.getNew(direction);
-	std::cout << "check 1" << std::endl;
+	Posn p = this->player->getPosition().getNew(direction);
 	std::string dir[8] = {"ea", "we", "no", "so", "ne", "nw", "sw", "se"};
 	std::string dir2[8] = {"East", "West", "North", "South", "Northeast", "Northwest", "Southwest", "Southeast"};
 	std::string log;
 	if (validMove(p)){
-		std::cout << "check 2" << std::endl;
 		std::string gold;
 		bool g;
 		if (displayGrid[p.y][p.x] == 'G') {
@@ -322,6 +300,18 @@ std::string Floor::movePlayer(std::string direction) {
 			}
 			g = true;
 		}
+		std::string barrier;
+		bool b;
+		if (displayGrid[p.y][p.x] == 'B') {
+			if (this->suit->isGuarded()) {
+				return "invalid";
+			}
+			b = true;
+			this->setSpawned(true);
+			this->player->setBarrier(true);
+			barrier = "You have acquired a Barrier Suit. ";
+		}
+		
 		if (p == this->stair->getPosition()){
 			return "newfloor";
 		}
@@ -335,18 +325,17 @@ std::string Floor::movePlayer(std::string direction) {
 		if (g) {
 			log += gold;
 		}
+		if (b){
+			log += barrier;
+		}
 		std::string potion;
 		potion = seePotion(p);
 		if (potion != "invalid") {
 			log += potion;
 		}
-		std::cout << "check 3" << std::endl;
-		displayGrid[this->player->position.y][this->player->position.x] = defaultGrid[this->player->position.y][this->player->position.x];
-		std::cout << "check 4" << std::endl;
+		displayGrid[this->player->getPosition().y][this->player->getPosition().x] = defaultGrid[this->player->getPosition().y][this->player->getPosition().x];
 		displayGrid[p.y][p.x] = this->player->getSymbol();
-		std::cout << "check 5" << std::endl;
 		this->player->move(p);
-		std::cout << "check 6" << std::endl;
 		return log;
 	}
 	return "invalid";
@@ -403,7 +392,7 @@ std::string Floor::seePotion(Posn p){
 }
 
 std::string Floor::usePotion(std::string direction){
-	Posn p = this->player->position.getNew(direction);
+	Posn p = this->player->getPosition().getNew(direction);
 	std::string log;
 	for (int i = 0; i < this->potions.size(); ++i){
 		if (p == this->potions.at(i)->getPosition()){
@@ -459,10 +448,10 @@ std::string Floor::usePotion(std::string direction){
 }
 
 std::string Floor::atkPlayer(std::string direction){
-	Posn p = this->player->position.getNew(direction);
+	Posn p = this->player->getPosition().getNew(direction);
 	std::string combatLog;
 	for (int i = 0; i < this->enemies.size(); ++i){
-		if (p == this->enemies.at(i)->position){
+		if (p == this->enemies.at(i)->getPosition()){
 			if (this->enemies.at(i)->getRace() == "Merchant") {
 				if (!this->getHostile()) { this->setHostile(true); }
 			}
@@ -477,7 +466,7 @@ std::string Floor::atkPlayer(std::string direction){
 				}
 				Enemy * temp = this->enemies.at(i);
 				this->enemies.erase(this->enemies.begin()+i);
-				displayGrid[temp->position.y][temp->position.x] = '.';
+				displayGrid[temp->getPosition().y][temp->getPosition().x] = '.';
 				if (temp->compass()) {
 					combatLog += "You found the compass. The stairs are now visible. ";
 					displayGrid[this->stair->getPosition().y][this->stair->getPosition().x] = '/';
@@ -492,7 +481,7 @@ std::string Floor::atkPlayer(std::string direction){
 
 bool Floor::validMove(Posn pos) {
 	char t = this->displayGrid[pos.y][pos.x];
-	return t == '.' || t == '+' || t == '#' || t == '/' || t == 'G';
+	return t == '.' || t == '+' || t == '#' || t == '/' || t == 'G' || t == 'B';
 }
 
 bool Floor::validTile(Posn pos) {

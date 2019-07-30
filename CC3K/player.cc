@@ -76,3 +76,7 @@ void Player::increaseDef(int amount)
 {
     this->Def += amount;
 }
+
+void Player::setBarrier(bool barrier){
+    this->hasBarrier = barrier;
+}

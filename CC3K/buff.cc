@@ -152,10 +152,10 @@ std::string Buff::dealDamage(Character *opponent)
 }
 
 
-/* Posn Buff::getPosition(){
+Posn Buff::getPosition(){
     return this->getPlayer()->getPosition();
-}*/
+}
 
-/* void Buff::move(Posn p){
+void Buff::move(Posn p){
     this->getPlayer()->move(p);
-}*/
+}

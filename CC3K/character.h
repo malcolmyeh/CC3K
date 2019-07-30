@@ -15,8 +15,9 @@ protected:
     std::string race;
     char symbol;
     bool stunned;
-public:
     Posn position;
+public:
+    
     void updateGold(int amount);
     virtual int getAtk();
     virtual int getDef();
@@ -27,9 +28,8 @@ public:
 
 
 
-
-    Posn getPosition();
-    void move(Posn position);
+    virtual Posn getPosition();
+    virtual void move(Posn position);
     /*Posn getPosition();
     void move(Posn position);*/
 

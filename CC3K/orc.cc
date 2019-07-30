@@ -73,7 +73,7 @@ std::string Orc::dealDamage(Character *opponent)
 
     if (opponent->getHP() == 0)
     {
-        combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold.";
+        combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold. ";
         this->updateGold(opponent->getGold());
     }
     return combatMsg;

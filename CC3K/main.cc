@@ -46,7 +46,7 @@ int main(void) {
 		std::string str;
 
 		do {
-			std::cout << std::endl;
+			std::cout << std::endl << std::endl;
 			std::cout << "Welcome to CC3K+" << std::endl << std::endl;
 			std::cout << "Please choose a race to begin:" << std::endl;
 			std::cout << "Human(140 HP, 20 Atk, 20 Def):  h" << std::endl;
@@ -67,7 +67,7 @@ int main(void) {
 			system("CLS");
 			std::cout << "Restarting Game" << std::endl << std::endl << std::endl;
 			continue;
-		} else if (status == "win") {
+		} else if (status == "won") {
 			readFile("won.txt", display);
 			printDisplay(display);
 			std::cout << std::endl;
@@ -82,12 +82,13 @@ int main(void) {
 
 		do {
 			std::cout << std::endl << std::endl;
-			std::cout << "Please enter r to restart or q to Quit." << std::endl;
+			std::cout << "Please enter r to restart or q to quit." << std::endl;
 			std::cin >> str;
 		} while(str != "r" && str != "q");
 
 		if (str == "r") {
 			system("CLS");
+			std::cout << std::endl;
 			std::cout << "Restarting Game" << std::endl << std::endl << std::endl;
 			continue;
 		} else if (str == "q") {

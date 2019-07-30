@@ -17,6 +17,7 @@ public:
     void heal(int amount);
     void increaseAtk(int amount);
     void increaseDef(int amount);
+    void setBarrier(bool barrier);
 };
 
 #endif
