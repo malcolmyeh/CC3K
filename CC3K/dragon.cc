@@ -14,6 +14,7 @@ Dragon::Dragon(Posn position, Gold *hoard, barrierSuit *suit, int chamberID)
     this->position = position;
     this->hoard = hoard;
     this->suit = suit;
+    this->stunned = false;
 }
 
 Dragon::~Dragon() {}

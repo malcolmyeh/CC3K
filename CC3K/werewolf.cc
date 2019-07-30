@@ -11,6 +11,7 @@ Werewolf::Werewolf(Posn position, int chamberID)
     this->hasCompass = false;
     this->chamberID = chamberID;
     this->position = position;
+    this->stunned = false;
 }
 
 Werewolf::~Werewolf() {}

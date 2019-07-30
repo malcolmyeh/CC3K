@@ -6,7 +6,7 @@ normalHoard::normalHoard(Posn p) {
     this->symbol = 'G';
     this->type = "normalHoard";
     this->value = 2;
-    this->guarded = "false";
+    this->guarded = false;
 }
 
 smallHoard::smallHoard(Posn p) {
@@ -14,7 +14,7 @@ smallHoard::smallHoard(Posn p) {
     this->symbol = 'G';
     this->type = "smallHoard";
     this->value = 1;
-    this->guarded = "false";
+    this->guarded = false;
 }
 
 dragonHoard::dragonHoard(Posn p) {
@@ -22,7 +22,7 @@ dragonHoard::dragonHoard(Posn p) {
     this->type = "dragonHoard";
     this->symbol = 'G';
     this->value = 6;
-    this->guarded = "true";
+    this->guarded = true;
 }
 
 // Accessors
