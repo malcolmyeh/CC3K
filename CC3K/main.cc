@@ -18,7 +18,7 @@ void readFile(std::string file, char display[27][89]) {
 }
 
 void printDisplay(char display[27][89]) {
-	system("CLS");
+	cout << "\033[2J\033[1;1H";
 	for (int i = 0; i < 27; i++) {
 		for (int j = 0; j < 89; j++) {
 			std::cout << display[i][j];
@@ -28,7 +28,7 @@ void printDisplay(char display[27][89]) {
 }
 
 void printEnd() {
-	system("CLS");
+	cout << "\033[2J\033[1;1H";
 	std::cout << "Thanks for playing Chamber Crawler 3000 +" << std::endl << std::endl;
 	std::cout << "Project by Malcolm Yeh, Zayaan Moez, Kai Lu for CS246" << std::endl;
 	std::cout << std::endl << std::endl << std::endl;
