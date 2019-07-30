@@ -68,7 +68,7 @@ std::string Dragon::dealDamage(Character *opponent)
 
     if (rand() % 3 == 0)
     {
-        amount *= 1.75;
+        amount *= 1.25;
         opponent->takeDamage((int)amount);
         combatMsg += attacker + " breathes fire, dealing " + std::to_string((int)amount) + " damage to you (HP: " + std::to_string(opponent->getHP()) + "). ";
     }

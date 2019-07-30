@@ -39,8 +39,8 @@ std::string Werewolf::dealDamage(Character *opponent)
 
     if (this->HP <= 30)
     {
-        combatMsg = attacker + "'s unstoppable rage increases its damage by 5. ";
-        this->Atk += 5;
+        combatMsg = attacker + "'s unstoppable rage increases its damage by 3. ";
+        this->Atk += 3;
     }
     else if (this-> HP <= 60)
     {

@@ -38,7 +38,7 @@ std::string Troll::dealDamage(Character *opponent)
     }
 
     amount = ceil((100.0 / (100.0 + defense)) * attack);
-    secondHit = amount * 0.5;
+    secondHit = amount * 0.33;
 
     if (rand() % 3 == 0)
     {
