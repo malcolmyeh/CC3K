@@ -9,7 +9,7 @@ class Potion: public Item {
         std::string type;
     public:
         Potion(Posn p, std::string type);
-        std::string getPotion();
+        std::string getType();
 };
 
 #endif

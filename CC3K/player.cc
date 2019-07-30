@@ -62,6 +62,9 @@ void Player::heal(int amount)
     if (this->HP > this->MaxHP){
         this->HP = this->MaxHP;
     }
+    if (this->HP <= 0){
+        this->HP = 1;
+    }
 }
 
 void Player::increaseAtk(int amount)

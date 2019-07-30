@@ -70,6 +70,8 @@ int main(void) {
 		} else if (status == "win") {
 			readFile("won.txt", display);
 			printDisplay(display);
+			std::cout << std::endl;
+			std::cout << "Your final score: " << c.getScore() << std::endl;
 		} else if (status == "loss") {
 			readFile("gameover.txt", display);
 			printDisplay(display);

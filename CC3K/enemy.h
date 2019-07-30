@@ -3,6 +3,8 @@
 
 #include "character.h"
 #include <cstdlib>
+#include "gold.h"
+#include "barriersuit.h"
 
 
 class Enemy : public Character
@@ -16,6 +18,8 @@ public:
     int cID();
     bool withinRange(Posn player);
     void setCompass(bool compass);
+    virtual dragonHoard *getHoard() = 0;
+    virtual barrierSuit *getSuit() = 0;
 };
 
 

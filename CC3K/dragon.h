@@ -1,8 +1,7 @@
 #ifndef DRAGON_H
 #define DRAGON_H
 #include "enemy.h"
-#include "gold.h"
-#include "barriersuit.h"
+
 
 class Dragon : public Enemy
 {
@@ -13,8 +12,8 @@ private:
 public:
     Dragon(Posn position, dragonHoard *hoard, barrierSuit *suit, int chamberID);
     ~Dragon();
-    dragonHoard *getHoard();
-    barrierSuit *getSuit();
+    dragonHoard *getHoard() override;
+    barrierSuit *getSuit() override;
     void setPos(Posn pos);
     std::string dealDamage(Character *opponent) override;
 };

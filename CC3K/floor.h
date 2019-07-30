@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <string>
 #include <vector>
 #include "posn.h"
 #include "stair.h"
@@ -30,14 +31,14 @@
 class Floor {
 private:
 	int level;
-	bool won;
 	bool merchantHostile;
 	bool barrierSpawned;
 
 public:
 	char defaultGrid[25][79];
 	std::vector<Enemy *> enemies;
-	std::vector<Item *> items; 
+	std::vector<Gold *> golds;
+	std::vector<Potion *> potions; 
 	std::vector<Chamber *> chambers; 
 	char displayGrid[25][79];
 	Stair * stair; 
@@ -45,11 +46,11 @@ public:
 	barrierSuit *suit; 
 	bool knownPotion[6];
 
-	Floor(int level, bool won, bool hostile, bool spawned, Player * player);
-	Floor();
+	Floor(int level, bool hostile, bool spawned);
 	~Floor();
 
 	void initFloor(char type);
+	void initNext(char type, int HP, int gold, int Atk, int Def, bool hasBarrier);
 	void generatePlayer(char type, int &id);
 	void generateStair(int id);
 	void generateEnemies(int dragons);
@@ -60,15 +61,16 @@ public:
 	void assignCompass();
 	std::string actEnemy();
 	std::string movePlayer(std::string direction);
+	std::string pickGold(Posn p);
 	std::string atkPlayer(std::string direction);
+	std::string seePotion();
+	std::string usePotion(std::string direction);
 	bool validTile(Posn pos);
 	bool validMove(Posn pos);
 	void setLevel(int level);
-	void setWon(bool won);
 	void setHostile(bool hostile);
 	void setSpawned(bool spawned);
 	int getLevel();
-	bool getWon();
 	bool getHostile();
 	bool getSpawned();
 	std::string seePotion();

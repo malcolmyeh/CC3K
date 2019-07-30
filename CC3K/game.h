@@ -19,6 +19,8 @@ public:
 	~Controller();
 	std::string runGame(char type);
 	void gameInit(char type);
+	void newFloor();
+	double getScore();
 
 };
 
