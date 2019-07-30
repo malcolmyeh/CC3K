@@ -134,10 +134,6 @@ void Controller::newFloor() {
 	delete tmpd;
 }
 
-void Controller::gameRead() {
-	
-}
-
 double Controller::getScore() {
 	if (floor->player->getRace() == "Human") { return (double)floor->player->getGold() * 1.5; }
 	if (floor->player->getRace() == "Orc") { return (double)floor->player->getGold() / 2.0; }
