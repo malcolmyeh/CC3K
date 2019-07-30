@@ -22,6 +22,7 @@ class Buff : public Player {
      	std::string dealDamage(Character *opponent) override;
         Posn getPosition() override;
         void move(Posn p) override;
+        void updateGold(int amount) override;
 };
 
 #endif

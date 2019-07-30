@@ -67,10 +67,10 @@ int main() {
 			std::cout << "Restarting Game" << std::endl << std::endl << std::endl;
 			continue;
 		} else if (status == "won") {
-			readFile("won.txt", display);
+			readFile("win.txt", display);
 			printDisplay(display);
 			std::cout << std::endl;
-			std::cout << "Your final score: " << c.getScore() << std::endl;
+			std::cout << "Final Score: " << c.getScore() << std::endl;
 		} else if (status == "loss") {
 			readFile("gameover.txt", display);
 			printDisplay(display);

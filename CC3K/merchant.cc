@@ -5,7 +5,7 @@ Merchant::Merchant(Posn position, int chamberID)
     this->Atk = 70;
     this->Def = 5;
     this->HP = 30;
-    this->gold = 1;
+    this->gold = 4;
     this->race = "Merchant";
     this->symbol = 'M';
     this->hasCompass = false;

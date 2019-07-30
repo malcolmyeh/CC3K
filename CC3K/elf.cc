@@ -11,7 +11,7 @@ Elf::Elf(int HP, int gold, Posn position)
     this->race = "Elf";
     this->symbol = '@';
     this->position = position;
-    this->MaxHP = 1400;
+    this->MaxHP = 140;
     this->hasBarrier = false;
 
 }

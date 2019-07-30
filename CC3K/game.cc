@@ -26,7 +26,7 @@ std::string Controller::runGame(char type) {
 					return "won";
 				}
 				this->newFloor();
-				log += "Welcome to floor " + std::to_string(floor->getLevel()) + ". ";
+				log += "Welcome to Floor " + std::to_string(floor->getLevel()) + ". ";
 				display->updateDisplay(floor);
 				display->printFloor(floor, log);
 				continue;

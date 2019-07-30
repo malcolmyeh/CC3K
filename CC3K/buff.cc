@@ -145,7 +145,7 @@ std::string Buff::dealDamage(Character *opponent)
     }
     if (opponent->getHP() == 0)
     {
-        combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold.";
+        combatMsg += defender + " has been slain. You have earned " + std::to_string(opponent->getGold()) + " gold. ";
         this->getPlayer()->updateGold(opponent->getGold());
     }
     return combatMsg;
@@ -159,3 +159,7 @@ Posn Buff::getPosition(){
 void Buff::move(Posn p){
     this->getPlayer()->move(p);
 }
+
+void Buff::updateGold(int amount){
+    this->getPlayer()->updateGold(amount);
+};
