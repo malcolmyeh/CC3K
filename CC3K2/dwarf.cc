@@ -11,7 +11,7 @@ Dwarf::Dwarf(int HP, int gold, Posn position)
     this->race = "Dwarf";
     this->symbol = '@';
     this->position = position;
-    this->MaxHP = 100;
+    this->MaxHP = 1000;
     this->hasBarrier = false;
 }
 
@@ -24,7 +24,7 @@ Dwarf::Dwarf(int HP, int gold, Posn position, int Atk, int Def, bool hasBarrier)
     this->race = "Dwarf";
     this->symbol = '@';
     this->position = position;
-    this->MaxHP = 100;
+    this->MaxHP = 1000;
     this->hasBarrier = hasBarrier;
 }
 

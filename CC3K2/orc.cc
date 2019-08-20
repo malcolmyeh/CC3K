@@ -9,7 +9,7 @@ Orc::Orc(int HP, int gold, Posn position)
     this->race = "Orc";
     this->symbol = '@';
     this->position = position;
-    this->MaxHP = 180;
+    this->MaxHP = 1800;
     this->hasBarrier = false;
 }
 
@@ -22,7 +22,7 @@ Orc::Orc(int HP, int gold, Posn position, int Atk, int Def, bool hasBarrier)
     this->race = "Orc";
     this->symbol = '@';
     this->position = position;
-    this->MaxHP = 180;
+    this->MaxHP = 1800;
     this->hasBarrier = hasBarrier;
 }
 
